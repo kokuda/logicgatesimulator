@@ -23,6 +23,7 @@ namespace LogicPuzzle
 
         public bool Remove(Components.Component c)
         {
+            c.Disconnect();
             return mComponentList.Remove(c);
         }
 

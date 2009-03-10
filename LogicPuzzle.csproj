@@ -60,6 +60,9 @@
     <Compile Include="Components\HorizontalWire.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\Or.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\VerticalWire.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -73,9 +76,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Nand.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\On.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -101,7 +101,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Components\Strobe.cs">
+    <Compile Include="Components\On.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

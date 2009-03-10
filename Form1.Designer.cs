@@ -32,16 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addNandButton = new System.Windows.Forms.ToolStripButton();
-            this.strobeButton = new System.Windows.Forms.ToolStripButton();
             this.bulbButton = new System.Windows.Forms.ToolStripButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.verticalWireButton = new System.Windows.Forms.ToolStripButton();
-            this.horizontalWireButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orButton = new System.Windows.Forms.ToolStripButton();
+            this.powerDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.strobeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wireToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.horizontalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,14 +54,14 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.powerDropDownButton,
             this.addNandButton,
-            this.strobeButton,
             this.bulbButton,
-            this.verticalWireButton,
-            this.horizontalWireButton});
+            this.orButton,
+            this.wireToolStripDropDownButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(292, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(577, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -69,16 +74,6 @@
             this.addNandButton.Size = new System.Drawing.Size(36, 22);
             this.addNandButton.Text = "Nand";
             this.addNandButton.Click += new System.EventHandler(this.addNandButton_Click);
-            // 
-            // strobeButton
-            // 
-            this.strobeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.strobeButton.Image = ((System.Drawing.Image)(resources.GetObject("strobeButton.Image")));
-            this.strobeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.strobeButton.Name = "strobeButton";
-            this.strobeButton.Size = new System.Drawing.Size(43, 22);
-            this.strobeButton.Text = "Strobe";
-            this.strobeButton.Click += new System.EventHandler(this.strobeButton_Click);
             // 
             // bulbButton
             // 
@@ -102,30 +97,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 49);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(292, 217);
+            this.panel1.Size = new System.Drawing.Size(577, 323);
             this.panel1.TabIndex = 1;
-            // 
-            // verticalWireButton
-            // 
-            this.verticalWireButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.verticalWireButton.Image = ((System.Drawing.Image)(resources.GetObject("verticalWireButton.Image")));
-            this.verticalWireButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.verticalWireButton.Name = "verticalWireButton";
-            this.verticalWireButton.Size = new System.Drawing.Size(39, 22);
-            this.verticalWireButton.Text = "VWire";
-            this.verticalWireButton.ToolTipText = "Vertical Wire";
-            this.verticalWireButton.Click += new System.EventHandler(this.verticalWireButton_Click);
-            // 
-            // horizontalWireButton
-            // 
-            this.horizontalWireButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.horizontalWireButton.Image = ((System.Drawing.Image)(resources.GetObject("horizontalWireButton.Image")));
-            this.horizontalWireButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.horizontalWireButton.Name = "horizontalWireButton";
-            this.horizontalWireButton.Size = new System.Drawing.Size(40, 22);
-            this.horizontalWireButton.Text = "HWire";
-            this.horizontalWireButton.ToolTipText = "Horizontal Wire";
-            this.horizontalWireButton.Click += new System.EventHandler(this.horizontalWireButton_Click);
             // 
             // menuStrip1
             // 
@@ -133,7 +106,7 @@
             this.fileStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(292, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(577, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -149,29 +122,97 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // orButton
+            // 
+            this.orButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.orButton.Image = ((System.Drawing.Image)(resources.GetObject("orButton.Image")));
+            this.orButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.orButton.Name = "orButton";
+            this.orButton.Size = new System.Drawing.Size(23, 22);
+            this.orButton.Text = "Or";
+            this.orButton.Click += new System.EventHandler(this.orButton_Click);
+            // 
+            // powerDropDownButton
+            // 
+            this.powerDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.powerDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.onToolStripMenuItem,
+            this.strobeToolStripMenuItem});
+            this.powerDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("powerDropDownButton.Image")));
+            this.powerDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.powerDropDownButton.Name = "powerDropDownButton";
+            this.powerDropDownButton.Size = new System.Drawing.Size(50, 22);
+            this.powerDropDownButton.Text = "Power";
+            // 
+            // onToolStripMenuItem
+            // 
+            this.onToolStripMenuItem.Name = "onToolStripMenuItem";
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.onToolStripMenuItem.Text = "On";
+            this.onToolStripMenuItem.Click += new System.EventHandler(this.onToolStripMenuItem_Click);
+            // 
+            // strobeToolStripMenuItem
+            // 
+            this.strobeToolStripMenuItem.Name = "strobeToolStripMenuItem";
+            this.strobeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.strobeToolStripMenuItem.Text = "Strobe";
+            this.strobeToolStripMenuItem.Click += new System.EventHandler(this.strobeToolStripMenuItem_Click);
+            // 
+            // wireToolStripDropDownButton
+            // 
+            this.wireToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.wireToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.horizontalWireToolStripMenuItem,
+            this.verticalWireToolStripMenuItem});
+            this.wireToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("wireToolStripDropDownButton.Image")));
+            this.wireToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.wireToolStripDropDownButton.Name = "wireToolStripDropDownButton";
+            this.wireToolStripDropDownButton.Size = new System.Drawing.Size(42, 22);
+            this.wireToolStripDropDownButton.Text = "Wire";
+            // 
+            // horizontalWireToolStripMenuItem
+            // 
+            this.horizontalWireToolStripMenuItem.Name = "horizontalWireToolStripMenuItem";
+            this.horizontalWireToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.horizontalWireToolStripMenuItem.Text = "Horizontal Wire";
+            this.horizontalWireToolStripMenuItem.Click += new System.EventHandler(this.horizontalWireToolStripMenuItem_Click);
+            // 
+            // verticalWireToolStripMenuItem
+            // 
+            this.verticalWireToolStripMenuItem.Name = "verticalWireToolStripMenuItem";
+            this.verticalWireToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.verticalWireToolStripMenuItem.Text = "Vertical Wire";
+            this.verticalWireToolStripMenuItem.Click += new System.EventHandler(this.verticalWireToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 26);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(292, 266);
+            this.ClientSize = new System.Drawing.Size(577, 372);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Logic";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -187,14 +228,19 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripButton addNandButton;
-        private System.Windows.Forms.ToolStripButton strobeButton;
         private System.Windows.Forms.ToolStripButton bulbButton;
-        private System.Windows.Forms.ToolStripButton verticalWireButton;
-        private System.Windows.Forms.ToolStripButton horizontalWireButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton orButton;
+        private System.Windows.Forms.ToolStripDropDownButton powerDropDownButton;
+        private System.Windows.Forms.ToolStripMenuItem onToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem strobeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton wireToolStripDropDownButton;
+        private System.Windows.Forms.ToolStripMenuItem horizontalWireToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalWireToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

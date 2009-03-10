@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
@@ -7,8 +8,6 @@ using System.Drawing;
 namespace LogicPuzzle.Components
 {
     // Handle generic logic component behaviours, such as drag and drop.
-    [System.Xml.Serialization.XmlType("LogicPuzzle_Component")]
-    [System.Xml.Serialization.XmlRoot(ElementName="LogicPuzzle_Component")]
     public class Component : Control
     {
         // Default constructor needed so that Visual Studio doesn't fail
@@ -28,6 +27,23 @@ namespace LogicPuzzle.Components
             {
                 mConnections[i] = new Connection(this);
             }
+        }
+
+        public virtual void Dispose()
+        {
+            base.Dispose();
+
+            for (int i = 0; i < mConnections.Length; ++i)
+            {
+                mConnections[i] = null;
+            }
+
+            mConnections = null;
+        }
+
+        ~Component()
+        {
+            Disconnect();
         }
 
         // Calculate the outputs from the inputs.
@@ -93,6 +109,10 @@ namespace LogicPuzzle.Components
         }
 
         public virtual void Deserialize(System.Xml.XmlReader reader)
+        {
+        }
+        
+        public virtual void ShowContextMenu(ContextMenuStrip menu, CancelEventArgs e)
         {
         }
 
