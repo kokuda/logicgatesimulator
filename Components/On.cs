@@ -40,7 +40,7 @@ namespace LogicPuzzle.Components
 
         public override void Execute()
         {
-            Invalidate();
+            base.Execute();
         }
 
         public override void Serialize(System.Xml.XmlWriter writer)

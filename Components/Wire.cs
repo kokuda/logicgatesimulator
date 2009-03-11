@@ -68,7 +68,7 @@ namespace LogicPuzzle.Components
 
         public override void Execute()
         {
-            Invalidate();
+            base.Execute();
         }
 
         public override bool GetValue(int index)
@@ -85,7 +85,7 @@ namespace LogicPuzzle.Components
             foreach (Connection c in Connections[1].Connections)
             {
                 result |= c.Value;
-            }
+                }
             return result;
         }
 

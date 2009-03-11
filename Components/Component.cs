@@ -16,6 +16,7 @@ namespace LogicPuzzle.Components
         {
             mMouseDown = false;
             mConnections = new Connection[0];
+            mPreviousValues = new bool[0];
         }
 
         public Component(int inputs, int outputs)
@@ -23,9 +24,11 @@ namespace LogicPuzzle.Components
             mMouseDown = false;
 
             mConnections = new Connection[inputs + outputs];
+            mPreviousValues = new bool[inputs + outputs];
             for (int i = 0; i < mConnections.Length; ++i)
             {
                 mConnections[i] = new Connection(this);
+                mPreviousValues[i] = false;
             }
         }
 
@@ -47,7 +50,13 @@ namespace LogicPuzzle.Components
         }
 
         // Calculate the outputs from the inputs.
-        public virtual void Execute() { }
+        public virtual void Execute()
+        {
+            if (ValuesDiffer())
+            {
+                InvalidateEx();
+            }
+        }
 
         public virtual Connection[] Connections { get { return mConnections; } }
 
@@ -134,10 +143,12 @@ namespace LogicPuzzle.Components
 
         protected virtual void OnDisconnect()
         {
+            InvalidateEx();
         }
 
         protected virtual void OnConnect()
         {
+            InvalidateEx();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -149,19 +160,25 @@ namespace LogicPuzzle.Components
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            // Start a drag
-            mMouseDown = true;
-            mMouseX = e.X;
-            mMouseY = e.Y;
-            this.BringToFront();
+            if (e.Button == MouseButtons.Left)
+            {
+                // Start a drag
+                mMouseDown = true;
+                mMouseX = e.X;
+                mMouseY = e.Y;
+                this.BringToFront();
+            }
 
             base.OnMouseDown(e);
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            mMouseDown = false;
-            mCircuit.ConnectComponent(this);
+            if (e.Button == MouseButtons.Left)
+            {
+                mMouseDown = false;
+                mCircuit.ConnectComponent(this);
+            }
             base.OnMouseUp(e);
         }
 
@@ -171,7 +188,51 @@ namespace LogicPuzzle.Components
             {
                 this.SetBounds(Location.X + e.X - mMouseX, Location.Y + e.Y - mMouseY, Bounds.Width, Bounds.Height);
                 base.OnMouseMove(e);
+                InvalidateEx();
             }
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x00000020; //WS_EX_TRANSPARENT
+                return cp;
+            }
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs pevent)
+        {
+            //do not allow the background to be painted 
+        }
+
+        protected void InvalidateEx()
+        {
+            if (Parent == null)
+                return;
+
+            Rectangle rc = new Rectangle(this.Location, this.Size);
+            Parent.Invalidate(rc, true);
+        }
+
+        private bool ValuesDiffer()
+        {
+            bool dirty = false;
+
+            // Compare the current value of each connection with
+            // the previously stored values.
+            for (int i = 0; i < Connections.Length; ++i )
+            {
+                bool value = GetValue(i);
+                if (mPreviousValues[i] != value)
+                {
+                    dirty = true;
+                    mPreviousValues[i] = value;
+                }
+            }
+
+            return dirty;
         }
 
         private bool mMouseDown;
@@ -179,5 +240,6 @@ namespace LogicPuzzle.Components
         private int mMouseY;
         private Circuit mCircuit;
         private Connection[] mConnections;
+        private bool[] mPreviousValues;
     }
 }

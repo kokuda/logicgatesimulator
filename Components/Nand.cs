@@ -24,7 +24,7 @@ namespace LogicPuzzle.Components
         public override void Execute()
         {
             SetValue(2, !(GetValue(0) && GetValue(1)));
-            Invalidate();
+            base.Execute();
         }
 
         //protected override void DrawComponent(Graphics g)

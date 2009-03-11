@@ -6,11 +6,75 @@ using System.Drawing;
 
 namespace LogicPuzzle.Components
 {
+    public class ConnectionList : List<WeakReference>
+    {
+        public void Add(Connection c)
+        {
+            Add(new WeakReference(c));
+        }
+
+        public bool Remove(Connection c)
+        {
+            bool result = false;
+            WeakReference wr = this.Find(delegate(WeakReference r)
+            {
+                if (r.Target == c)
+                {
+                    return true;
+                }
+                return false;
+            });
+
+            if (wr != null)
+            {
+                result = this.Remove(wr);
+            }
+
+            return result;
+        }
+
+        // Doesn't return an IEnumerator:
+        public ConnectionEnumerator GetEnumerator()
+        {
+            return new ConnectionEnumerator(base.GetEnumerator());
+        }
+
+        public class ConnectionEnumerator
+        {
+            private List<WeakReference>.Enumerator mEnumerator;
+
+            public ConnectionEnumerator(List<WeakReference>.Enumerator e)
+            {
+                mEnumerator = e;
+            }
+
+            public bool MoveNext()
+            {
+                bool result = false;
+
+                // Skip over null values
+                do
+                {
+                    result = mEnumerator.MoveNext();
+                }
+                while (result && (mEnumerator.Current.Target == null));
+
+                return result;
+            }
+
+            public Connection Current
+            {
+                get { return mEnumerator.Current.Target as Connection; }
+            }
+        }
+
+    }
+
     public class Connection
     {
         public Connection(Component parent)
         {
-            mConnections = new List<Connection>();
+            mConnections = new ConnectionList();
             mValue = false;
             mParent = parent;
         }
@@ -27,7 +91,7 @@ namespace LogicPuzzle.Components
             set { mValue = value; }
         }
 
-        public List<Connection> Connections
+        public ConnectionList Connections
         {
             get { return mConnections; }
         }
@@ -39,7 +103,7 @@ namespace LogicPuzzle.Components
 
         Point mLocation;
         bool mValue;
-        List<Connection> mConnections;
+        ConnectionList mConnections;
         Component mParent;
     }
 }

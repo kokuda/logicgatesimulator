@@ -21,7 +21,7 @@ namespace LogicPuzzle.Components
 
         public override void Execute()
         {
-            Invalidate();
+            base.Execute();
         }
 
         protected override void DrawComponent(Graphics g)
@@ -36,6 +36,5 @@ namespace LogicPuzzle.Components
             //g.DrawEllipse(pen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
             g.FillEllipse(GetValue(0) ? Brushes.Red : Brushes.Black, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
         }
-
     }
 }
