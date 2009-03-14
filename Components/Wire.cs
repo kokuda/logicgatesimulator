@@ -56,10 +56,7 @@ namespace LogicPuzzle.Components
         public Wire(Control parent, Point in0, Point in1)
             : base(1,1)
         {
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.BackColor = Color.Transparent;
-            this.Parent = parent;
-            this.Bounds = new Rectangle(0, 0, Math.Max(in0.X, in1.X) + 5, Math.Max(in0.Y, in1.Y) + 5);
+            Bounds = new Rectangle(0, 0, Math.Max(in0.X, in1.X) + 5, Math.Max(in0.Y, in1.Y) + 5);
             
             Connections[0] = new WireConnection(this);
             Connections[1] = new WireConnection(this);

@@ -16,10 +16,7 @@ namespace LogicPuzzle.Components
         public On(Control parent, double interval)
             : base(0, 1)
         {
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.BackColor = Color.Transparent;
-            this.Parent = parent;
-            this.Bounds = new Rectangle(0, 0, 100, 50);
+            Bounds = new Rectangle(0, 0, 100, 50);
 
             Connections[0].Location = new Point(this.Width - 5, this.Height / 2);
 

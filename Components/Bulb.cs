@@ -11,10 +11,7 @@ namespace LogicPuzzle.Components
         public Bulb(Control parent)
             : base(1, 0)
         {
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.BackColor = Color.Transparent;
-            this.Parent = parent;
-            this.Bounds = new Rectangle(0, 0, 100, 50);
+            Bounds = new Rectangle(0, 0, 100, 50);
 
             Connections[0].Location = new Point(5, this.Height / 2);
         }
@@ -24,7 +21,7 @@ namespace LogicPuzzle.Components
             base.Execute();
         }
 
-        protected override void DrawComponent(Graphics g)
+        public override void DrawComponent(Graphics g)
         {
             Color c = GetValue(0) ? Color.Red : Color.Black;
             int w = Connections[0].Connections.Count > 0 ? 2 : 1;

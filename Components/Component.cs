@@ -7,22 +7,116 @@ using System.Drawing;
 
 namespace LogicPuzzle.Components
 {
+    public class ComponentControl : Control
+    {
+        public ComponentControl(Component parent)
+        {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            BackColor = Color.Transparent;
+
+            mParent = parent;
+            mMouseDown = false;
+        }
+
+        public Component Component
+        {
+            get { return mParent; }
+        }
+
+        private Component mParent;
+        private bool mMouseDown;
+        private int mMouseX;
+        private int mMouseY;
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            //e.Graphics.SetClip(Parent.DisplayRectangle);
+            base.OnPaint(e);
+            mParent.DrawComponent(e.Graphics);
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                // Start a drag
+                mMouseDown = true;
+                mMouseX = e.X;
+                mMouseY = e.Y;
+                this.BringToFront();
+            }
+
+            base.OnMouseDown(e);
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mMouseDown = false;
+                mParent.Circuit.ConnectComponent(mParent);
+            }
+            base.OnMouseUp(e);
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if (mMouseDown)
+            {
+                this.SetBounds(Location.X + e.X - mMouseX, Location.Y + e.Y - mMouseY, Bounds.Width, Bounds.Height);
+                base.OnMouseMove(e);
+                InvalidateEx();
+            }
+        }
+
+        //protected override void OnLocationChanged(EventArgs e)
+        //{
+        //    base.OnLocationChanged(e);
+        //    mParent.Location = Location;
+        //}
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x00000020; //WS_EX_TRANSPARENT
+                return cp;
+            }
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs pevent)
+        {
+            //do not allow the background to be painted 
+        }
+
+        public void InvalidateEx()
+        {
+            if (Parent == null)
+                return;
+
+            Rectangle rc = new Rectangle(this.Location, this.Size);
+            Parent.Invalidate(rc, true);
+        }
+
+        public virtual void ShowContextMenu(ContextMenuStrip menu, CancelEventArgs e)
+        {
+        }
+    }
+
     // Handle generic logic component behaviours, such as drag and drop.
-    public class Component : Control
+    public class Component
     {
         // Default constructor needed so that Visual Studio doesn't fail
         // when attempting to open the components in design mode.
         public Component()
         {
-            mMouseDown = false;
             mConnections = new Connection[0];
             mPreviousValues = new bool[0];
         }
 
         public Component(int inputs, int outputs)
         {
-            mMouseDown = false;
-
             mConnections = new Connection[inputs + outputs];
             mPreviousValues = new bool[inputs + outputs];
             for (int i = 0; i < mConnections.Length; ++i)
@@ -34,7 +128,10 @@ namespace LogicPuzzle.Components
 
         public virtual void Dispose()
         {
-            base.Dispose();
+            if (mControl != null)
+            {
+                mControl.Dispose();
+            }
 
             for (int i = 0; i < mConnections.Length; ++i)
             {
@@ -46,7 +143,20 @@ namespace LogicPuzzle.Components
 
         ~Component()
         {
-            Disconnect();
+            //Disconnect();
+        }
+
+        public void Show(Control parent, ContextMenuStrip menuStrip)
+        {
+            // Create the control if it does not exist and initialize it.
+            if (mControl == null)
+            {
+                mControl = new ComponentControl(this);
+            }
+            mControl.Bounds = mBounds;
+            mControl.Location = mLocation;
+            mControl.Parent = parent;
+            mControl.ContextMenuStrip = menuStrip;
         }
 
         public virtual void Setup()
@@ -61,8 +171,6 @@ namespace LogicPuzzle.Components
                 InvalidateEx();
             }
         }
-
-        public virtual Connection[] Connections { get { return mConnections; } }
 
         public virtual void ConnectInput(int index, Connection c)
         {
@@ -94,12 +202,6 @@ namespace LogicPuzzle.Components
             OnDisconnect();
         }
 
-        public virtual Circuit Circuit
-        {
-            set { mCircuit = value; }
-            get { return mCircuit; }
-        }
-
         public virtual bool GetValue(int index)
         {
             bool result = mConnections[index].Value;
@@ -125,11 +227,7 @@ namespace LogicPuzzle.Components
         {
         }
         
-        public virtual void ShowContextMenu(ContextMenuStrip menu, CancelEventArgs e)
-        {
-        }
-
-        protected virtual void DrawComponent(Graphics g)
+        public virtual void DrawComponent(Graphics g)
         {
             Pen blackpen = new Pen(Color.Black, 1);
 
@@ -145,6 +243,67 @@ namespace LogicPuzzle.Components
             g.DrawEllipse(blackpen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
         }
 
+        ///////////////////////////////////////////////////////////////////////
+        // Public Properties
+        ///////////////////////////////////////////////////////////////////////
+        public Rectangle Bounds
+        {
+            get
+            {
+                return mBounds;
+            }
+            set
+            {
+                if (mControl != null)
+                {
+                    mControl.Bounds = value;
+                }
+                mBounds = value;
+            }
+        }
+
+        public int Width
+        {
+            get { return Bounds.Width; }
+        }
+
+        public int Height
+        {
+            get { return Bounds.Height; }
+        }
+
+        private Point mLocation;
+        public Point Location
+        {
+            get
+            {
+                if (mControl != null)
+                {
+                    mLocation = mControl.Location;
+                }
+                return mLocation;
+            }
+            set
+            {
+                if (mControl != null)
+                {
+                    mControl.Location = value;
+                }
+                mLocation = value;
+            }
+        }
+
+        public virtual Connection[] Connections
+        {
+            get { return mConnections; }
+        }
+
+        public virtual Circuit Circuit
+        {
+            set { mCircuit = value; }
+            get { return mCircuit; }
+        }
+
         protected virtual void OnDisconnect()
         {
             InvalidateEx();
@@ -155,70 +314,9 @@ namespace LogicPuzzle.Components
             InvalidateEx();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            //e.Graphics.SetClip(Parent.DisplayRectangle);
-            base.OnPaint(e);
-            DrawComponent(e.Graphics);
-        }
-
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                // Start a drag
-                mMouseDown = true;
-                mMouseX = e.X;
-                mMouseY = e.Y;
-                this.BringToFront();
-            }
-
-            base.OnMouseDown(e);
-        }
-
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                mMouseDown = false;
-                mCircuit.ConnectComponent(this);
-            }
-            base.OnMouseUp(e);
-        }
-
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            if (mMouseDown)
-            {
-                this.SetBounds(Location.X + e.X - mMouseX, Location.Y + e.Y - mMouseY, Bounds.Width, Bounds.Height);
-                base.OnMouseMove(e);
-                InvalidateEx();
-            }
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x00000020; //WS_EX_TRANSPARENT
-                return cp;
-            }
-        }
-
-        protected override void OnPaintBackground(PaintEventArgs pevent)
-        {
-            //do not allow the background to be painted 
-        }
-
-        protected void InvalidateEx()
-        {
-            if (Parent == null)
-                return;
-
-            Rectangle rc = new Rectangle(this.Location, this.Size);
-            Parent.Invalidate(rc, true);
-        }
+        ///////////////////////////////////////////////////////////////////////
+        // Private
+        ///////////////////////////////////////////////////////////////////////
 
         private bool ValuesDiffer()
         {
@@ -239,11 +337,18 @@ namespace LogicPuzzle.Components
             return dirty;
         }
 
-        private bool mMouseDown;
-        private int mMouseX;
-        private int mMouseY;
+        private void InvalidateEx()
+        {
+            if (mControl != null)
+            {
+                mControl.InvalidateEx();
+            }
+        }
+
         private Circuit mCircuit;
         private Connection[] mConnections;
         private bool[] mPreviousValues;
+        private ComponentControl mControl;
+        private Rectangle mBounds;
     }
 }

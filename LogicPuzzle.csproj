@@ -51,29 +51,22 @@
     <Compile Include="Circuit.cs">
     </Compile>
     <Compile Include="Components\And.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Bulb.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Component.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Connection.cs" />
     <Compile Include="Components\HorizontalWire.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Or.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\VerticalWire.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Wire.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Xor.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -82,7 +75,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Nand.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,7 +100,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Components\On.cs">
-      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

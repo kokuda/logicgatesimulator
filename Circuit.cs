@@ -125,6 +125,11 @@ namespace LogicPuzzle
             }
         }
 
+        public List<Components.Component> Components
+        {
+            get { return mComponentList; }
+        }
+
         private List<Components.Component> mComponentList;
         private Control mParent;
     }

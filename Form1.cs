@@ -21,7 +21,7 @@ namespace LogicPuzzle
             mCircuit = new Circuit(panel1);
             //mCircuit.Add(new Components.Nand(panel1));
             //mCircuit.Add(new Components.Nand(panel1));
-            mCircuit.Add(InitializeComponent(new Components.On(panel1, 1000)));
+            mCircuit.Add(ShowComponent(new Components.On(panel1, 1000)));
         }
 
         private Circuit mCircuit;
@@ -56,88 +56,91 @@ namespace LogicPuzzle
                 {
                     mCircuit.Deserialize(s);
                     s.Close();
+
+                    // Show each component in the circuit.
+                    foreach (Components.Component c in mCircuit.Components)
+                    {
+                        c.Show(panel1, contextMenuStrip1);
+                    }
                 }
             }
         }
 
-        private Components.Component InitializeComponent(Components.Component c)
+        private Components.Component ShowComponent(Components.Component c)
         {
-            // We currently set the parent through the constructor, but I'm not
-            // sure that this is the best way to do it.
-            //c.Parent = panel1;
-            c.ContextMenuStrip = contextMenuStrip1;
+            c.Show(panel1, contextMenuStrip1);
             return c;
         }
 
         private void bulbButton_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.Bulb(panel1)));
+            mCircuit.Add(ShowComponent(new Components.Bulb(panel1)));
         }
 
         private void onToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.On(panel1, 0)));
+            mCircuit.Add(ShowComponent(new Components.On(panel1, 0)));
         }
 
         private void strobeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.On(panel1, 1000)));
+            mCircuit.Add(ShowComponent(new Components.On(panel1, 1000)));
         }
 
         private void horizontalWireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.HorizontalWire(panel1)));
+            mCircuit.Add(ShowComponent(new Components.HorizontalWire(panel1)));
         }
 
         private void verticalWireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.VerticalWire(panel1)));
+            mCircuit.Add(ShowComponent(new Components.VerticalWire(panel1)));
         }
 
         private void shortVericalWireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.ShortVerticalWire(panel1)));
+            mCircuit.Add(ShowComponent(new Components.ShortVerticalWire(panel1)));
         }
 
         private void andToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.And(panel1)));
+            mCircuit.Add(ShowComponent(new Components.And(panel1)));
         }
 
         private void orToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.Or(panel1)));
+            mCircuit.Add(ShowComponent(new Components.Or(panel1)));
         }
 
         private void nandToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.Nand(panel1)));
+            mCircuit.Add(ShowComponent(new Components.Nand(panel1)));
         }
 
         private void xorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(InitializeComponent(new Components.Xor(panel1)));
+            mCircuit.Add(ShowComponent(new Components.Xor(panel1)));
         }
 
         class MyToolStripButton : ToolStripButton
         {
-            public MyToolStripButton(string name, Components.Component component)
+            public MyToolStripButton(string name, Components.ComponentControl component)
                 : base(name)
             {
                 mComponent = component;
             }
 
-            public Components.Component Component
+            public Components.ComponentControl Component
             {
                 get { return mComponent; }
                 set { mComponent = value; }
             }
-            Components.Component mComponent;
+            Components.ComponentControl mComponent;
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            Components.Component c = contextMenuStrip1.SourceControl as Components.Component;
+            Components.ComponentControl c = contextMenuStrip1.SourceControl as Components.ComponentControl;
             contextMenuStrip1.Items.Clear();
             ToolStripItem delete = new MyToolStripButton("Delete", c);
             delete.Click +=new EventHandler(delete_Click);
@@ -149,7 +152,7 @@ namespace LogicPuzzle
         void delete_Click(object sender, EventArgs e)
         {
             MyToolStripButton b = sender as MyToolStripButton;
-            mCircuit.Remove(b.Component);
+            mCircuit.Remove(b.Component.Component);
             if (panel1.Controls.Contains(b.Component))
             {
                 panel1.Controls.Remove(b.Component);

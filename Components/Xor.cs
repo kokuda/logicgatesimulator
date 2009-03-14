@@ -11,10 +11,7 @@ namespace LogicPuzzle.Components
         public Xor(Control parent)
             : base(2, 1)
         {
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.BackColor = Color.Transparent;
-            this.Parent = parent;
-            this.Bounds = new Rectangle(0, 0, 100, 50);
+            Bounds = new Rectangle(0, 0, 100, 50);
 
             Connections[0].Location = new Point(5, 5);
             Connections[1].Location = new Point (5, this.Height - 5);
@@ -27,7 +24,7 @@ namespace LogicPuzzle.Components
             base.Execute();
         }
 
-        protected override void DrawComponent(Graphics g)
+        public override void DrawComponent(Graphics g)
         {
             base.DrawComponent(g);
             g.DrawString("XOR", new Font("Courier", 10), Brushes.Black, this.Width / 2, this.Height / 2);
