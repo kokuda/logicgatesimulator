@@ -6,9 +6,9 @@ using System.Drawing;
 
 namespace LogicPuzzle.Components
 {
-    public class Nand : Component
+    class Xor : Component
     {
-        public Nand(Control parent)
+        public Xor(Control parent)
             : base(2, 1)
         {
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -23,23 +23,14 @@ namespace LogicPuzzle.Components
 
         public override void Execute()
         {
-            SetValue(2, !(GetValue(0) && GetValue(1)));
+            SetValue(2, GetValue(0) ^ GetValue(1));
             base.Execute();
         }
 
         protected override void DrawComponent(Graphics g)
         {
             base.DrawComponent(g);
-            g.DrawString("NAND", new Font("Courier", 10), Brushes.Black, this.Width / 2, this.Height / 2);
+            g.DrawString("XOR", new Font("Courier", 10), Brushes.Black, this.Width / 2, this.Height / 2);
         }
-
-        //protected override void DrawComponent(Graphics g)
-        //{
-        //    Pen p = new Pen(Color.Black);
-        //    g.DrawEllipse(p, this.Width/3, this.Height/3, this.Width/3, this.Height/3);
-        //    g.DrawEllipse(p, new Rectangle(InputLocations[0], new Size(4, 4)));
-        //    g.DrawEllipse(p, new Rectangle(InputLocations[1], new Size(4, 4)));
-        //    g.DrawEllipse(p, new Rectangle(OutputLocations[0], new Size(4, 4)));
-        //}
     }
 }

@@ -61,6 +61,11 @@ namespace LogicPuzzle
         {
             foreach (Components.Component c in mComponentList)
             {
+                c.Setup();
+            }
+
+            foreach (Components.Component c in mComponentList)
+            {
                 c.Execute();
             }
         }

@@ -49,6 +49,10 @@ namespace LogicPuzzle.Components
             Disconnect();
         }
 
+        public virtual void Setup()
+        {
+        }
+
         // Calculate the outputs from the inputs.
         public virtual void Execute()
         {

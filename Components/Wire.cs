@@ -31,7 +31,8 @@ namespace LogicPuzzle.Components
                     // Instead of returning the value, we return the value of
                     // each of the attached connections for both ends of the wire.
                     mProcessing = true;
-                    bool value = Parent.GetValue(0) || Parent.GetValue(1);
+                    // We only need to get one value of the parent wire as each value is the same (sum of all connections).
+                    bool value = Parent.GetValue(0); // || Parent.GetValue(1);
                     mProcessing = false;
                     return value;
                 }
@@ -66,6 +67,12 @@ namespace LogicPuzzle.Components
             Connections[1].Location = in1;
         }
 
+        public override void Setup()
+        {
+            mCalculated = false;
+            mValue = false;
+        }
+
         public override void Execute()
         {
             base.Execute();
@@ -73,6 +80,11 @@ namespace LogicPuzzle.Components
 
         public override bool GetValue(int index)
         {
+            if (mCalculated)
+            {
+                return mValue;
+            }
+
             // The value of either input is the logical OR of ALL connections
             // to all inputs.
 
@@ -85,7 +97,12 @@ namespace LogicPuzzle.Components
             foreach (Connection c in Connections[1].Connections)
             {
                 result |= c.Value;
-                }
+            }
+
+            // Disable the caching of the values as it isn't propagating them correctly.
+            // Also, the performance has improved so there may not be a need for the caching.
+            //mValue = result;
+            //mCalculated = true;
             return result;
         }
 
@@ -95,5 +112,8 @@ namespace LogicPuzzle.Components
             SetValue(1, false);
             base.OnDisconnect();
         }
+
+        private bool mCalculated;
+        private bool mValue;
     }
 }

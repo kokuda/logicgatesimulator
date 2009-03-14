@@ -69,19 +69,9 @@ namespace LogicPuzzle
             return c;
         }
 
-        private void addNandButton_Click(object sender, EventArgs e)
-        {
-            mCircuit.Add(InitializeComponent(new Components.Nand(panel1)));
-        }
-
         private void bulbButton_Click(object sender, EventArgs e)
         {
             mCircuit.Add(InitializeComponent(new Components.Bulb(panel1)));
-        }
-
-        private void orButton_Click(object sender, EventArgs e)
-        {
-            mCircuit.Add(InitializeComponent(new Components.Or(panel1)));
         }
 
         private void onToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,6 +92,31 @@ namespace LogicPuzzle
         private void verticalWireToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mCircuit.Add(InitializeComponent(new Components.VerticalWire(panel1)));
+        }
+
+        private void shortVericalWireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(InitializeComponent(new Components.ShortVerticalWire(panel1)));
+        }
+
+        private void andToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(InitializeComponent(new Components.And(panel1)));
+        }
+
+        private void orToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(InitializeComponent(new Components.Or(panel1)));
+        }
+
+        private void nandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(InitializeComponent(new Components.Nand(panel1)));
+        }
+
+        private void xorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(InitializeComponent(new Components.Xor(panel1)));
         }
 
         class MyToolStripButton : ToolStripButton
