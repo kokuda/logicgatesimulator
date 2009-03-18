@@ -34,7 +34,7 @@ namespace LogicPuzzle.Components
         }
 
         // Doesn't return an IEnumerator:
-        public ConnectionEnumerator GetEnumerator()
+        public new ConnectionEnumerator GetEnumerator()
         {
             return new ConnectionEnumerator(base.GetEnumerator());
         }

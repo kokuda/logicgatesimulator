@@ -122,6 +122,11 @@ namespace LogicPuzzle
             mCircuit.Add(ShowComponent(new Components.Xor(panel1)));
         }
 
+        private void shortHorizontalWireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(ShowComponent(new Components.ShortHorizontalWire(panel1)));
+        }
+
         class MyToolStripButton : ToolStripButton
         {
             public MyToolStripButton(string name, Components.ComponentControl component)
@@ -152,12 +157,8 @@ namespace LogicPuzzle
         void delete_Click(object sender, EventArgs e)
         {
             MyToolStripButton b = sender as MyToolStripButton;
-            mCircuit.Remove(b.Component.Component);
-            if (panel1.Controls.Contains(b.Component))
-            {
-                panel1.Controls.Remove(b.Component);
-            }
-            b.Component.Dispose();
+            b.Component.DeleteComponent();
         }
+
     }
 }

@@ -13,4 +13,11 @@ namespace LogicPuzzle.Components
         {
         }
     }
+    public class ShortHorizontalWire : Wire
+    {
+        public ShortHorizontalWire(Control parent)
+            : base(parent, new Point(5, 5), new Point(50, 5))
+        {
+        }
+    }
 }

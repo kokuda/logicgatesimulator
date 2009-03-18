@@ -7,105 +7,8 @@ using System.Drawing;
 
 namespace LogicPuzzle.Components
 {
-    public class ComponentControl : Control
-    {
-        public ComponentControl(Component parent)
-        {
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            BackColor = Color.Transparent;
-
-            mParent = parent;
-            mMouseDown = false;
-        }
-
-        public Component Component
-        {
-            get { return mParent; }
-        }
-
-        private Component mParent;
-        private bool mMouseDown;
-        private int mMouseX;
-        private int mMouseY;
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            //e.Graphics.SetClip(Parent.DisplayRectangle);
-            base.OnPaint(e);
-            mParent.DrawComponent(e.Graphics);
-        }
-
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                // Start a drag
-                mMouseDown = true;
-                mMouseX = e.X;
-                mMouseY = e.Y;
-                this.BringToFront();
-            }
-
-            base.OnMouseDown(e);
-        }
-
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                mMouseDown = false;
-                mParent.Circuit.ConnectComponent(mParent);
-            }
-            base.OnMouseUp(e);
-        }
-
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            if (mMouseDown)
-            {
-                this.SetBounds(Location.X + e.X - mMouseX, Location.Y + e.Y - mMouseY, Bounds.Width, Bounds.Height);
-                base.OnMouseMove(e);
-                InvalidateEx();
-            }
-        }
-
-        //protected override void OnLocationChanged(EventArgs e)
-        //{
-        //    base.OnLocationChanged(e);
-        //    mParent.Location = Location;
-        //}
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x00000020; //WS_EX_TRANSPARENT
-                return cp;
-            }
-        }
-
-        protected override void OnPaintBackground(PaintEventArgs pevent)
-        {
-            //do not allow the background to be painted 
-        }
-
-        public void InvalidateEx()
-        {
-            if (Parent == null)
-                return;
-
-            Rectangle rc = new Rectangle(this.Location, this.Size);
-            Parent.Invalidate(rc, true);
-        }
-
-        public virtual void ShowContextMenu(ContextMenuStrip menu, CancelEventArgs e)
-        {
-        }
-    }
-
     // Handle generic logic component behaviours, such as drag and drop.
-    public class Component
+    public class Component : ComponentControlInterface
     {
         // Default constructor needed so that Visual Studio doesn't fail
         // when attempting to open the components in design mode.
@@ -226,7 +129,10 @@ namespace LogicPuzzle.Components
         public virtual void Deserialize(System.Xml.XmlReader reader)
         {
         }
-        
+
+        ///////////////////////////////////////////////////////////////////////
+        // ComponentControlInterface implementation
+        ///////////////////////////////////////////////////////////////////////
         public virtual void DrawComponent(Graphics g)
         {
             Pen blackpen = new Pen(Color.Black, 1);
@@ -241,6 +147,18 @@ namespace LogicPuzzle.Components
                 g.DrawLine(pen, mConnections[i].Location, new Point(this.Width / 2, this.Height / 2));
             }
             g.DrawEllipse(blackpen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
+        }
+
+        public void MoveComponent()
+        {
+            // The component may have moved.
+            // Reconnect any connections in the circuit.
+            mCircuit.ConnectComponent(this);
+        }
+
+        public void DeleteComponent()
+        {
+            mCircuit.Remove(this);
         }
 
         ///////////////////////////////////////////////////////////////////////

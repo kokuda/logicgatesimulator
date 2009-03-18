@@ -55,6 +55,8 @@
     <Compile Include="Components\Bulb.cs">
     </Compile>
     <Compile Include="Components\Component.cs">
+    </Compile>
+    <Compile Include="Components\ComponentControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Connection.cs" />
