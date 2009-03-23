@@ -62,6 +62,7 @@
     <Compile Include="Components\Connection.cs" />
     <Compile Include="Components\HorizontalWire.cs">
     </Compile>
+    <Compile Include="Components\IC.cs" />
     <Compile Include="Components\Or.cs">
     </Compile>
     <Compile Include="Components\VerticalWire.cs">

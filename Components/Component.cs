@@ -14,11 +14,15 @@ namespace LogicPuzzle.Components
         // when attempting to open the components in design mode.
         public Component()
         {
-            mConnections = new Connection[0];
-            mPreviousValues = new bool[0];
+            Reinitalize(0, 0);
         }
 
         public Component(int inputs, int outputs)
+        {
+            Reinitalize(inputs, outputs);
+        }
+
+        public void Reinitalize(int inputs, int outputs)
         {
             mConnections = new Connection[inputs + outputs];
             mPreviousValues = new bool[inputs + outputs];
@@ -52,14 +56,20 @@ namespace LogicPuzzle.Components
         public void Show(Control parent, ContextMenuStrip menuStrip)
         {
             // Create the control if it does not exist and initialize it.
-            if (mControl == null)
+            if (mControl == null || mControl.IsDisposed)
             {
-                mControl = new ComponentControl(this);
+                // mControl = new ComponentControl(this);
+                mControl = CreateComponentControl();
             }
             mControl.Bounds = mBounds;
             mControl.Location = mLocation;
             mControl.Parent = parent;
             mControl.ContextMenuStrip = menuStrip;
+        }
+
+        protected virtual ComponentControl CreateComponentControl()
+        {
+            return new ComponentControl(this);
         }
 
         public virtual void Setup()
@@ -263,8 +273,8 @@ namespace LogicPuzzle.Components
             }
         }
 
+        protected Connection[] mConnections;
         private Circuit mCircuit;
-        private Connection[] mConnections;
         private bool[] mPreviousValues;
         private ComponentControl mControl;
         private Rectangle mBounds;

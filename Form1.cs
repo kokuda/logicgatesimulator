@@ -15,12 +15,7 @@ namespace LogicPuzzle
         {
             InitializeComponent();
 
-            //SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            //BackColor = Color.Transparent;
-
             mCircuit = new Circuit(panel1);
-            //mCircuit.Add(new Components.Nand(panel1));
-            //mCircuit.Add(new Components.Nand(panel1));
             mCircuit.Add(ShowComponent(new Components.On(panel1, 1000)));
         }
 
@@ -29,7 +24,6 @@ namespace LogicPuzzle
         private void timer1_Tick(object sender, EventArgs e)
         {
             mCircuit.Run();
-            System.GC.Collect();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,6 +121,24 @@ namespace LogicPuzzle
             mCircuit.Add(ShowComponent(new Components.ShortHorizontalWire(panel1)));
         }
 
+        private void userCreatedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog d = new OpenFileDialog();
+            if (d.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.Stream s;
+                if ((s = d.OpenFile()) != null)
+                {
+                    System.IO.FileInfo info = new System.IO.FileInfo(d.FileName);
+                    Components.IC ic = new Components.IC(panel1, info.Name.Remove(info.Name.Length - info.Extension.Length));
+                    ic.Deserialize(s);
+                    s.Close();
+
+                    mCircuit.Add(ShowComponent(ic));
+                }
+            }
+        }
+
         class MyToolStripButton : ToolStripButton
         {
             public MyToolStripButton(string name, Components.ComponentControl component)
@@ -159,6 +171,5 @@ namespace LogicPuzzle
             MyToolStripButton b = sender as MyToolStripButton;
             b.Component.DeleteComponent();
         }
-
     }
 }

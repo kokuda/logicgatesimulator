@@ -52,6 +52,7 @@
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.shortHorizontalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userCreatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -147,7 +148,8 @@
             this.andToolStripMenuItem,
             this.orToolStripMenuItem,
             this.nandToolStripMenuItem,
-            this.xorToolStripMenuItem});
+            this.xorToolStripMenuItem,
+            this.userCreatedToolStripMenuItem});
             this.gatesToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("gatesToolStripDropDownButton.Image")));
             this.gatesToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.gatesToolStripDropDownButton.Name = "gatesToolStripDropDownButton";
@@ -243,6 +245,13 @@
             this.shortHorizontalWireToolStripMenuItem.Text = "Short Horizontal Wire";
             this.shortHorizontalWireToolStripMenuItem.Click += new System.EventHandler(this.shortHorizontalWireToolStripMenuItem_Click);
             // 
+            // userCreatedToolStripMenuItem
+            // 
+            this.userCreatedToolStripMenuItem.Name = "userCreatedToolStripMenuItem";
+            this.userCreatedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userCreatedToolStripMenuItem.Text = "User Created";
+            this.userCreatedToolStripMenuItem.Click += new System.EventHandler(this.userCreatedToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,6 +297,7 @@
         private System.Windows.Forms.ToolStripMenuItem nandToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shortHorizontalWireToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userCreatedToolStripMenuItem;
     }
 }
 
