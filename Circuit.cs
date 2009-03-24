@@ -71,15 +71,9 @@ namespace LogicPuzzle
         }
             
         // Write the layout info to the stream
-        public void Serialize(System.IO.Stream stream)
+
+        public void Serialize(System.Xml.XmlWriter writer)
         {
-            //System.Xml.Serialization.XmlSerializer s = new System.Xml.Serialization.XmlSerializer(mComponentList.GetType());
-            //s.Serialize(stream, mComponentList);
-
-            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings() { Indent = true };
-            System.Xml.XmlWriter writer = System.Xml.XmlWriter.Create(stream, settings);
-
-            writer.WriteStartDocument();
             writer.WriteStartElement("circuit");
             foreach (Components.Component c in mComponentList)
             {
@@ -91,12 +85,22 @@ namespace LogicPuzzle
                 writer.WriteEndElement();
             }
             writer.WriteEndElement();
+        }
+
+        public void Serialize(System.IO.Stream stream)
+        {
+            System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings() { Indent = true };
+            System.Xml.XmlWriter writer = System.Xml.XmlWriter.Create(stream, settings);
+
+            writer.WriteStartDocument();
+            Serialize(writer);
             writer.Close();
         }
 
-        // Read in a layout from the stream
-        public void Deserialize(System.IO.Stream stream)
+        public void Deserialize(System.Xml.XmlReader reader)
         {
+            //reader.ReadStartElement("circuit");
+
             // Delete the current components.
             foreach (Components.Component c in mComponentList)
             {
@@ -104,8 +108,6 @@ namespace LogicPuzzle
             }
             mComponentList.Clear();
 
-            System.Xml.XmlReader reader = System.Xml.XmlReader.Create(stream);
-            reader.ReadStartElement("circuit");
             while (reader.Read())
             {
                 if (reader.IsStartElement("component"))
@@ -114,7 +116,7 @@ namespace LogicPuzzle
                     int x = int.Parse(reader.GetAttribute("x"));
                     int y = int.Parse(reader.GetAttribute("y"));
                     Object[] param = new Object[1] { mParent };
-                    Type[] types = new Type[1] {mParent.GetType()};
+                    Type[] types = new Type[1] { mParent.GetType() };
                     System.Reflection.ConstructorInfo info = System.Reflection.Emit.TypeBuilder.GetType(type).GetConstructor(types);
                     Components.Component c = (Components.Component)info.Invoke(param);
                     c.Deserialize(reader.ReadSubtree());
@@ -123,6 +125,13 @@ namespace LogicPuzzle
                     ConnectComponent(c);
                 }
             }
+        }
+
+        // Read in a layout from the stream
+        public void Deserialize(System.IO.Stream stream)
+        {
+            System.Xml.XmlReader reader = System.Xml.XmlReader.Create(stream);
+            Deserialize(reader);
         }
 
         public List<Components.Component> Components

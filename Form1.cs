@@ -121,6 +121,12 @@ namespace LogicPuzzle
             mCircuit.Add(ShowComponent(new Components.ShortHorizontalWire(panel1)));
         }
 
+        private string GetNameWithoutExtension(string filename)
+        {
+            System.IO.FileInfo info = new System.IO.FileInfo(filename);
+            return info.Name.Remove(info.Name.Length - info.Extension.Length);
+        }
+
         private void userCreatedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.OpenFileDialog d = new OpenFileDialog();
@@ -129,9 +135,8 @@ namespace LogicPuzzle
                 System.IO.Stream s;
                 if ((s = d.OpenFile()) != null)
                 {
-                    System.IO.FileInfo info = new System.IO.FileInfo(d.FileName);
-                    Components.IC ic = new Components.IC(panel1, info.Name.Remove(info.Name.Length - info.Extension.Length));
-                    ic.Deserialize(s);
+                    Components.IC ic = new Components.IC(panel1, GetNameWithoutExtension(d.FileName));
+                    ic.LoadCircuit(s);
                     s.Close();
 
                     mCircuit.Add(ShowComponent(ic));

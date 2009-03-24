@@ -12,71 +12,29 @@ namespace LogicPuzzle.Components
         ///////////////////////////////////////////////////////////////////////
         // Public methods
         ///////////////////////////////////////////////////////////////////////
-        public IC(Control parent, string name)
+        public IC(Control parent)
         {
             Bounds = new Rectangle(0, 0, 100, 50);
             mCircuit = new Circuit(parent);
+            mName = "unknown";
+        }
+
+        public IC(Control parent, string name)
+            : this(parent)
+        {
             mName = name;
         }
 
-        public void Deserialize(System.IO.Stream stream)
+        public void LoadCircuit(System.Xml.XmlReader reader)
         {
-            mCircuit.Deserialize(stream);
-            List<Component> componentList = new List<Component>();
+            mCircuit.Deserialize(reader);
+            InitializeFromCircuit();
+        }
 
-            // Find the inputs and outputs of the circuit.
-            int inputCount = 0;
-            int outputCount = 0;
-            foreach (Component c in mCircuit.Components)
-            {
-                // Using On objects as input
-                if (c.GetType() == typeof(On))
-                {
-                    inputCount++;
-                    componentList.Add(c);
-                }
-                if (c.GetType() == typeof(Bulb))
-                {
-                    outputCount++;
-                    componentList.Add(c);
-                }
-            }
-
-            int inputOffset = Height / inputCount;
-            int inputIndex = 0;
-            int outputOffset = Height / outputCount;
-            int outputIndex = 0;
-
-            Reinitalize(inputCount, outputCount);
-
-            for (int i = 0; i < componentList.Count; ++i)
-            {
-                // If it is an input point then add it to the left side.
-                if (componentList[i].GetType() == typeof(On))
-                {
-                    // Replace the "On" component with an "Input" component.
-                    Input input = new Input(componentList[i] as On, mConnections[i]);
-                    mCircuit.Remove(componentList[i]);
-                    mCircuit.Add(input);
-                    mCircuit.ConnectComponent(input);
-
-                    mConnections[i].Location = new Point(5, 5 + inputIndex * inputOffset);
-                    ++inputIndex;
-                }
-
-                // If it is an output point then add it to the right side.
-                if (componentList[i].GetType() == typeof(Bulb))
-                {
-                    // Replace the "Bulb" component with an "Output" component.
-                    Output output = new Output(componentList[i] as Bulb, mConnections[i]);
-                    mCircuit.Remove(componentList[i]);
-                    mCircuit.Add(output);
-                    mCircuit.ConnectComponent(output);
-
-                    mConnections[i].Location = new Point(Width - 5, 5 + outputIndex * outputOffset);
-                    ++outputIndex;
-                }
-            }
+        public void LoadCircuit(System.IO.Stream stream)
+        {
+            System.Xml.XmlReader reader = System.Xml.XmlReader.Create(stream);
+            LoadCircuit(reader);
         }
 
         ///////////////////////////////////////////////////////////////////////
@@ -99,6 +57,40 @@ namespace LogicPuzzle.Components
             return new ICComponentControl(this);
         }
 
+        public override void Serialize(System.Xml.XmlWriter writer)
+        {
+            writer.WriteElementString("name", mName);
+            writer.WriteStartElement("subcircuit");
+            mCircuit.Serialize(writer);
+            writer.WriteEndElement();
+        }
+
+        public override void Deserialize(System.Xml.XmlReader reader)
+        {
+            while (reader.Read())
+            {
+                switch (reader.NodeType)
+                {
+                    case System.Xml.XmlNodeType.Element:
+                        if (reader.Name == "name")
+                        {
+                            mName = reader.ReadElementContentAsString();
+                        }
+                        else if (reader.Name == "subcircuit")
+                        {
+                            System.Xml.XmlReader subreader = reader.ReadSubtree();
+                            LoadCircuit(subreader);
+                        }
+                        break;
+                }
+            }
+
+            //string content = reader.ReadElementContentAsString();
+            //byte[] bytes = System.Text.ASCIIEncoding.ASCII.GetBytes(content);
+            //System.IO.Stream s = new System.IO.MemoryStream(bytes);
+            //LoadCircuit(s);
+        }
+
         ///////////////////////////////////////////////////////////////////////
         // Properties
         ///////////////////////////////////////////////////////////////////////
@@ -119,6 +111,75 @@ namespace LogicPuzzle.Components
 
         private Circuit mCircuit;
         private string mName;
+
+        private bool IsInput(Component c)
+        {
+            return (c.GetType() == typeof(On)) || (c.GetType() == typeof(Input));
+        }
+
+        private bool IsOutput(Component c)
+        {
+            return (c.GetType() == typeof(Bulb)) || (c.GetType() == typeof(Output));
+        }
+
+        private void InitializeFromCircuit()
+        {
+            List<Component> componentList = new List<Component>();
+
+            // Find the inputs and outputs of the circuit.
+            int inputCount = 0;
+            int outputCount = 0;
+            foreach (Component c in mCircuit.Components)
+            {
+                // Using On objects as input
+                if (IsInput(c))
+                {
+                    inputCount++;
+                    componentList.Add(c);
+                }
+                if (IsOutput(c))
+                {
+                    outputCount++;
+                    componentList.Add(c);
+                }
+            }
+
+            int inputOffset = inputCount > 1 ? (Height - 10) / (inputCount - 1) : Height - 5;
+            int inputLocation = 5;
+            int outputOffset = outputCount > 1 ? (Height - 10) / (outputCount - 1) : Height - 5;
+            int outputLocation = 5;
+
+            Reinitalize(inputCount, outputCount);
+
+            for (int i = 0; i < componentList.Count; ++i)
+            {
+                // If it is an input point then add it to the left side.
+                if (IsInput(componentList[i]))
+                {
+                    // Replace the "On" component with an "Input" component.
+                    Input input = new Input(componentList[i], mConnections[i]);
+                    mCircuit.Remove(componentList[i]);
+                    mCircuit.Add(input);
+                    mCircuit.ConnectComponent(input);
+
+                    mConnections[i].Location = new Point(5, inputLocation);
+                    inputLocation += inputOffset;
+                }
+
+                // If it is an output point then add it to the right side.
+                if (IsOutput(componentList[i]))
+                {
+                    // Replace the "Bulb" component with an "Output" component.
+                    Output output = new Output(componentList[i], mConnections[i]);
+                    mCircuit.Remove(componentList[i]);
+                    mCircuit.Add(output);
+                    mCircuit.ConnectComponent(output);
+
+                    mConnections[i].Location = new Point(Width - 5, outputLocation);
+                    outputLocation += outputOffset;
+                }
+            }
+        }
 
         private class ICComponentControl : ComponentControl
         {
@@ -167,6 +228,12 @@ namespace LogicPuzzle.Components
 
         private class IOComponent : Component
         {
+            // Used by the deserializer
+            public IOComponent(Control parent)
+                : base(1,0)
+            {
+            }
+
             public IOComponent(Component copy, Connection conn)
                 : base(copy.Connections.Length,0)
             {
@@ -179,22 +246,27 @@ namespace LogicPuzzle.Components
             protected Connection mIOConnection;
         }
 
+        // Special IO components to interface between the internal
+        // and external circuits.
+        // We could make these more like wires, and make the values
+        // dynamic.  That would propagate the values faster and avoid
+        // possible loop conditions.
         private class Input : IOComponent
         {
-            public Input(On copy, Connection conn)
-                : base(copy, conn)
+            // Used by the deserializer
+            public Input(Control parent)
+                : base(parent)
             {
+                // Since the serializer doesn't save the location of the connections
+                // we have to initialize them to the default "input/on" locations.
+                // In theory we should serialize all of this.
+                Bounds = new Rectangle(0, 0, 100, 50);
+                Connections[0].Location = new Point(this.Width - 5, this.Height / 2);
             }
 
-            public override bool GetValue(int index)
+            public Input(Component copy, Connection conn)
+                : base(copy, conn)
             {
-                bool result = false;
-                foreach (Connection c in mIOConnection.Connections)
-                {
-                    result |= c.Value;
-                }
-
-                return result;
             }
 
             public override void Execute()
@@ -212,20 +284,20 @@ namespace LogicPuzzle.Components
 
         private class Output : IOComponent
         {
-            public Output(Bulb copy, Connection conn)
-                : base(copy, conn)
+            // Used by the deserializer
+            public Output(Control parent)
+                : base(parent)
             {
+                // Since the serializer doesn't save the location of the connections
+                // we have to initialize them to the default "output/bulb" locations.
+                // In theory we should serialize all of this.
+                Bounds = new Rectangle(0, 0, 100, 50);
+                Connections[0].Location = new Point(5, this.Height / 2);
             }
 
-            public override bool GetValue(int index)
+            public Output(Component copy, Connection conn)
+                : base(copy, conn)
             {
-                bool result = false;
-                foreach (Connection c in Connections[0].Connections)
-                {
-                    result |= c.Value;
-                }
-
-                return result;
             }
 
             public override void Execute()
