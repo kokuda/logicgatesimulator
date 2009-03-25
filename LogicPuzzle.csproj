@@ -63,6 +63,7 @@
     <Compile Include="Components\HorizontalWire.cs">
     </Compile>
     <Compile Include="Components\IC.cs" />
+    <Compile Include="Components\Not.cs" />
     <Compile Include="Components\Or.cs">
     </Compile>
     <Compile Include="Components\VerticalWire.cs">

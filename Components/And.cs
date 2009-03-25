@@ -8,7 +8,7 @@ namespace LogicPuzzle.Components
 {
     class And : Component
     {
-        public And(Control parent)
+        public And()
             : base(2, 1)
         {
             Bounds = new Rectangle(0, 0, 100, 50);

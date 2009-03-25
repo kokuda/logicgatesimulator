@@ -12,15 +12,15 @@ namespace LogicPuzzle.Components
         ///////////////////////////////////////////////////////////////////////
         // Public methods
         ///////////////////////////////////////////////////////////////////////
-        public IC(Control parent)
+        public IC()
         {
             Bounds = new Rectangle(0, 0, 100, 50);
-            mCircuit = new Circuit(parent);
+            mCircuit = new Circuit();
             mName = "unknown";
         }
 
-        public IC(Control parent, string name)
-            : this(parent)
+        public IC(string name)
+            : this()
         {
             mName = name;
         }
@@ -229,9 +229,10 @@ namespace LogicPuzzle.Components
         private class IOComponent : Component
         {
             // Used by the deserializer
-            public IOComponent(Control parent)
+            public IOComponent()
                 : base(1,0)
             {
+                Connections[0] = new WireConnection(this);
             }
 
             public IOComponent(Component copy, Connection conn)
@@ -239,6 +240,7 @@ namespace LogicPuzzle.Components
             {
                 mIOConnection = conn;
                 Bounds = copy.Bounds;
+                Connections[0] = new WireConnection(this);
                 Connections[0].Location = copy.Connections[0].Location;
                 Location = copy.Location;
             }
@@ -254,8 +256,8 @@ namespace LogicPuzzle.Components
         private class Input : IOComponent
         {
             // Used by the deserializer
-            public Input(Control parent)
-                : base(parent)
+            public Input()
+                : base()
             {
                 // Since the serializer doesn't save the location of the connections
                 // we have to initialize them to the default "input/on" locations.
@@ -269,7 +271,7 @@ namespace LogicPuzzle.Components
             {
             }
 
-            public override void Execute()
+            public override bool GetValue(int index)
             {
                 bool result = false;
                 foreach (Connection c in mIOConnection.Connections)
@@ -277,7 +279,18 @@ namespace LogicPuzzle.Components
                     result |= c.Value;
                 }
 
-                Connections[0].Value = result;
+                return result;
+            }
+
+            public override void Execute()
+            {
+                //bool result = false;
+                //foreach (Connection c in mIOConnection.Connections)
+                //{
+                //    result |= c.Value;
+                //}
+
+                //SetValue(0, result);
                 base.Execute();
             }
         }
@@ -285,8 +298,8 @@ namespace LogicPuzzle.Components
         private class Output : IOComponent
         {
             // Used by the deserializer
-            public Output(Control parent)
-                : base(parent)
+            public Output()
+                : base()
             {
                 // Since the serializer doesn't save the location of the connections
                 // we have to initialize them to the default "output/bulb" locations.

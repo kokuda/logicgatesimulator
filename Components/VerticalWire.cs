@@ -8,16 +8,16 @@ namespace LogicPuzzle.Components
 {
     public class VerticalWire : Wire
     {
-        public VerticalWire(Control parent)
-            : base(parent, new Point(5, 5), new Point(5, 45))
+        public VerticalWire()
+            : base(new Point(5, 5), new Point(5, 45))
         {
         }
     }
 
     public class ShortVerticalWire : Wire
     {
-        public ShortVerticalWire(Control parent)
-            : base(parent, new Point(5, 5), new Point(5, 25))
+        public ShortVerticalWire()
+            : base(new Point(5, 5), new Point(5, 25))
         {
         }
     }

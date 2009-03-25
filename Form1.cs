@@ -15,8 +15,8 @@ namespace LogicPuzzle
         {
             InitializeComponent();
 
-            mCircuit = new Circuit(panel1);
-            mCircuit.Add(ShowComponent(new Components.On(panel1, 1000)));
+            mCircuit = new Circuit();
+            mCircuit.Add(ShowComponent(new Components.On(1000)));
         }
 
         private Circuit mCircuit;
@@ -60,6 +60,11 @@ namespace LogicPuzzle
             }
         }
 
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Clear();
+        }
+
         private Components.Component ShowComponent(Components.Component c)
         {
             c.Show(panel1, contextMenuStrip1);
@@ -68,57 +73,62 @@ namespace LogicPuzzle
 
         private void bulbButton_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.Bulb(panel1)));
+            mCircuit.Add(ShowComponent(new Components.Bulb()));
         }
 
         private void onToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.On(panel1, 0)));
+            mCircuit.Add(ShowComponent(new Components.On(0)));
         }
 
         private void strobeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.On(panel1, 1000)));
+            mCircuit.Add(ShowComponent(new Components.On(1000)));
         }
 
         private void horizontalWireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.HorizontalWire(panel1)));
+            mCircuit.Add(ShowComponent(new Components.HorizontalWire()));
         }
 
         private void verticalWireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.VerticalWire(panel1)));
+            mCircuit.Add(ShowComponent(new Components.VerticalWire()));
         }
 
         private void shortVericalWireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.ShortVerticalWire(panel1)));
+            mCircuit.Add(ShowComponent(new Components.ShortVerticalWire()));
         }
 
         private void andToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.And(panel1)));
+            mCircuit.Add(ShowComponent(new Components.And()));
         }
 
         private void orToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.Or(panel1)));
+            mCircuit.Add(ShowComponent(new Components.Or()));
         }
 
         private void nandToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.Nand(panel1)));
+            mCircuit.Add(ShowComponent(new Components.Nand()));
         }
 
         private void xorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.Xor(panel1)));
+            mCircuit.Add(ShowComponent(new Components.Xor()));
         }
 
         private void shortHorizontalWireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mCircuit.Add(ShowComponent(new Components.ShortHorizontalWire(panel1)));
+            mCircuit.Add(ShowComponent(new Components.ShortHorizontalWire()));
+        }
+
+        private void notToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(ShowComponent(new Components.Not()));
         }
 
         private string GetNameWithoutExtension(string filename)
@@ -135,7 +145,7 @@ namespace LogicPuzzle
                 System.IO.Stream s;
                 if ((s = d.OpenFile()) != null)
                 {
-                    Components.IC ic = new Components.IC(panel1, GetNameWithoutExtension(d.FileName));
+                    Components.IC ic = new Components.IC(GetNameWithoutExtension(d.FileName));
                     ic.LoadCircuit(s);
                     s.Close();
 

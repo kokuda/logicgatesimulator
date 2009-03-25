@@ -8,15 +8,15 @@ namespace LogicPuzzle.Components
 {
     public class HorizontalWire : Wire
     {
-        public HorizontalWire(Control parent)
-            : base(parent, new Point(5, 5), new Point(95, 5))
+        public HorizontalWire()
+            : base(new Point(5, 5), new Point(95, 5))
         {
         }
     }
     public class ShortHorizontalWire : Wire
     {
-        public ShortHorizontalWire(Control parent)
-            : base(parent, new Point(5, 5), new Point(50, 5))
+        public ShortHorizontalWire()
+            : base(new Point(5, 5), new Point(50, 5))
         {
         }
     }

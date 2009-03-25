@@ -8,7 +8,7 @@ namespace LogicPuzzle.Components
 {
     public class Nand : Component
     {
-        public Nand(Control parent)
+        public Nand()
             : base(2, 1)
         {
             Bounds = new Rectangle(0, 0, 100, 50);

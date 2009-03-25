@@ -8,7 +8,7 @@ namespace LogicPuzzle.Components
 {
     class Xor : Component
     {
-        public Xor(Control parent)
+        public Xor()
             : base(2, 1)
         {
             Bounds = new Rectangle(0, 0, 100, 50);

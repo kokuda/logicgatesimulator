@@ -39,20 +39,22 @@
             this.horizontalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shortVericalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shortHorizontalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gatesToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.andToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userCreatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.shortHorizontalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userCreatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -141,10 +143,18 @@
             this.shortVericalWireToolStripMenuItem.Text = "Short Verical Wire";
             this.shortVericalWireToolStripMenuItem.Click += new System.EventHandler(this.shortVericalWireToolStripMenuItem_Click);
             // 
+            // shortHorizontalWireToolStripMenuItem
+            // 
+            this.shortHorizontalWireToolStripMenuItem.Name = "shortHorizontalWireToolStripMenuItem";
+            this.shortHorizontalWireToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.shortHorizontalWireToolStripMenuItem.Text = "Short Horizontal Wire";
+            this.shortHorizontalWireToolStripMenuItem.Click += new System.EventHandler(this.shortHorizontalWireToolStripMenuItem_Click);
+            // 
             // gatesToolStripDropDownButton
             // 
             this.gatesToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.gatesToolStripDropDownButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.notToolStripMenuItem,
             this.andToolStripMenuItem,
             this.orToolStripMenuItem,
             this.nandToolStripMenuItem,
@@ -159,34 +169,49 @@
             // andToolStripMenuItem
             // 
             this.andToolStripMenuItem.Name = "andToolStripMenuItem";
-            this.andToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.andToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.andToolStripMenuItem.Text = "And";
             this.andToolStripMenuItem.Click += new System.EventHandler(this.andToolStripMenuItem_Click);
             // 
             // orToolStripMenuItem
             // 
             this.orToolStripMenuItem.Name = "orToolStripMenuItem";
-            this.orToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.orToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.orToolStripMenuItem.Text = "Or";
             this.orToolStripMenuItem.Click += new System.EventHandler(this.orToolStripMenuItem_Click);
             // 
             // nandToolStripMenuItem
             // 
             this.nandToolStripMenuItem.Name = "nandToolStripMenuItem";
-            this.nandToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.nandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nandToolStripMenuItem.Text = "Nand";
             this.nandToolStripMenuItem.Click += new System.EventHandler(this.nandToolStripMenuItem_Click);
             // 
             // xorToolStripMenuItem
             // 
             this.xorToolStripMenuItem.Name = "xorToolStripMenuItem";
-            this.xorToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.xorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.xorToolStripMenuItem.Text = "Xor";
             this.xorToolStripMenuItem.Click += new System.EventHandler(this.xorToolStripMenuItem_Click);
+            // 
+            // userCreatedToolStripMenuItem
+            // 
+            this.userCreatedToolStripMenuItem.Name = "userCreatedToolStripMenuItem";
+            this.userCreatedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userCreatedToolStripMenuItem.Text = "User Created";
+            this.userCreatedToolStripMenuItem.Click += new System.EventHandler(this.userCreatedToolStripMenuItem_Click);
+            // 
+            // notToolStripMenuItem
+            // 
+            this.notToolStripMenuItem.Name = "notToolStripMenuItem";
+            this.notToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.notToolStripMenuItem.Text = "Not";
+            this.notToolStripMenuItem.Click += new System.EventHandler(this.notToolStripMenuItem_Click);
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
+            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panel1
@@ -213,7 +238,8 @@
             // 
             this.fileStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.loadToolStripMenuItem,
+            this.newToolStripMenuItem});
             this.fileStripMenuItem.Name = "fileStripMenuItem";
             this.fileStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileStripMenuItem.Text = "File";
@@ -232,25 +258,18 @@
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // shortHorizontalWireToolStripMenuItem
-            // 
-            this.shortHorizontalWireToolStripMenuItem.Name = "shortHorizontalWireToolStripMenuItem";
-            this.shortHorizontalWireToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.shortHorizontalWireToolStripMenuItem.Text = "Short Horizontal Wire";
-            this.shortHorizontalWireToolStripMenuItem.Click += new System.EventHandler(this.shortHorizontalWireToolStripMenuItem_Click);
-            // 
-            // userCreatedToolStripMenuItem
-            // 
-            this.userCreatedToolStripMenuItem.Name = "userCreatedToolStripMenuItem";
-            this.userCreatedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.userCreatedToolStripMenuItem.Text = "User Created";
-            this.userCreatedToolStripMenuItem.Click += new System.EventHandler(this.userCreatedToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -298,6 +317,8 @@
         private System.Windows.Forms.ToolStripMenuItem xorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shortHorizontalWireToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userCreatedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notToolStripMenuItem;
     }
 }
 

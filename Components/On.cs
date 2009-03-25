@@ -8,12 +8,12 @@ namespace LogicPuzzle.Components
 {
     public class On : Component
     {
-        public On(Control parent)
-            : this(parent, 0)
+        public On()
+            : this(0)
         {
         }
 
-        public On(Control parent, double interval)
+        public On(double interval)
             : base(0, 1)
         {
             Bounds = new Rectangle(0, 0, 100, 50);

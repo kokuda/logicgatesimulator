@@ -9,10 +9,19 @@ namespace LogicPuzzle
     // Contains a set of components that, together, can make a circuit
     public class Circuit
     {
-        public Circuit(Control parent)
+        public Circuit()
         {
-            mParent = parent;
             mComponentList = new List<Components.Component>();
+        }
+
+        public void Clear()
+        {
+            // Delete the current components.
+            foreach (Components.Component c in mComponentList)
+            {
+                c.Dispose();
+            }
+            mComponentList.Clear();
         }
 
         public void Add(Components.Component c)
@@ -102,11 +111,7 @@ namespace LogicPuzzle
             //reader.ReadStartElement("circuit");
 
             // Delete the current components.
-            foreach (Components.Component c in mComponentList)
-            {
-                c.Dispose();
-            }
-            mComponentList.Clear();
+            Clear();
 
             while (reader.Read())
             {
@@ -115,8 +120,8 @@ namespace LogicPuzzle
                     string type = reader.GetAttribute("type");
                     int x = int.Parse(reader.GetAttribute("x"));
                     int y = int.Parse(reader.GetAttribute("y"));
-                    Object[] param = new Object[1] { mParent };
-                    Type[] types = new Type[1] { mParent.GetType() };
+                    Object[] param = new Object[0];
+                    Type[] types = new Type[0];
                     System.Reflection.ConstructorInfo info = System.Reflection.Emit.TypeBuilder.GetType(type).GetConstructor(types);
                     Components.Component c = (Components.Component)info.Invoke(param);
                     c.Deserialize(reader.ReadSubtree());
@@ -140,6 +145,6 @@ namespace LogicPuzzle
         }
 
         private List<Components.Component> mComponentList;
-        private Control mParent;
+        //private Control mParent;
     }
 }

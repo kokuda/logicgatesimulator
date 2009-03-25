@@ -53,7 +53,7 @@ namespace LogicPuzzle.Components
     /// </summary>
     public class Wire : Component
     {
-        public Wire(Control parent, Point in0, Point in1)
+        public Wire(Point in0, Point in1)
             : base(1,1)
         {
             Bounds = new Rectangle(0, 0, Math.Max(in0.X, in1.X) + 5, Math.Max(in0.Y, in1.Y) + 5);
