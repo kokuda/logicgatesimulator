@@ -55,6 +55,8 @@
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.bitDisplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bitDisplayToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -159,7 +161,9 @@
             this.orToolStripMenuItem,
             this.nandToolStripMenuItem,
             this.xorToolStripMenuItem,
-            this.userCreatedToolStripMenuItem});
+            this.userCreatedToolStripMenuItem,
+            this.bitDisplayToolStripMenuItem,
+            this.bitDisplayToolStripMenuItem1});
             this.gatesToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("gatesToolStripDropDownButton.Image")));
             this.gatesToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.gatesToolStripDropDownButton.Name = "gatesToolStripDropDownButton";
@@ -271,6 +275,20 @@
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
+            // bitDisplayToolStripMenuItem
+            // 
+            this.bitDisplayToolStripMenuItem.Name = "bitDisplayToolStripMenuItem";
+            this.bitDisplayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bitDisplayToolStripMenuItem.Text = "4 Bit Display";
+            this.bitDisplayToolStripMenuItem.Click += new System.EventHandler(this.bitDisplayToolStripMenuItem_Click);
+            // 
+            // bitDisplayToolStripMenuItem1
+            // 
+            this.bitDisplayToolStripMenuItem1.Name = "bitDisplayToolStripMenuItem1";
+            this.bitDisplayToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.bitDisplayToolStripMenuItem1.Text = "8 Bit Display";
+            this.bitDisplayToolStripMenuItem1.Click += new System.EventHandler(this.bitDisplayToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,6 +337,8 @@
         private System.Windows.Forms.ToolStripMenuItem userCreatedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bitDisplayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bitDisplayToolStripMenuItem1;
     }
 }
 

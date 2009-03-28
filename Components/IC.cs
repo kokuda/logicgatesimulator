@@ -49,7 +49,13 @@ namespace LogicPuzzle.Components
         public override void DrawComponent(Graphics g)
         {
             base.DrawComponent(g);
-            g.DrawString(mName, new Font("Courier", 10), Brushes.Black, this.Width / 2, this.Height / 2);
+
+            Pen blackpen = new Pen(Color.Black, 1);
+            Font font = new Font("Courier", 10);
+            Rectangle centerRect = new Rectangle(15, 5, Width - 30, Height - 10);
+            g.FillRectangle(Brushes.White, centerRect);
+            g.DrawRectangle(blackpen, centerRect);
+            g.DrawString(mName, new Font("Courier", 10), Brushes.Black, centerRect);
         }
 
         protected override ComponentControl CreateComponentControl()
@@ -144,11 +150,22 @@ namespace LogicPuzzle.Components
                 }
             }
 
-            int inputOffset = inputCount > 1 ? (Height - 10) / (inputCount - 1) : Height - 5;
+            int inputOffset = 20;
             int inputLocation = 5;
-            int outputOffset = outputCount > 1 ? (Height - 10) / (outputCount - 1) : Height - 5;
+            int outputOffset = 20;
             int outputLocation = 5;
 
+            // Special case the case of 1 or two inputs/outputs
+            int maxPorts = Math.Max(inputCount, outputCount);
+            if (maxPorts < 3)
+            {
+                inputOffset = 40;
+                outputOffset = 40;
+            }
+
+            int height = 10 + inputOffset * Math.Max(inputCount - 1, outputCount - 1);
+            height = Math.Max(height, 50);
+            Bounds = new Rectangle(0, 0, 100, height);
             Reinitalize(inputCount, outputCount);
 
             for (int i = 0; i < componentList.Count; ++i)

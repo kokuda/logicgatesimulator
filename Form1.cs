@@ -131,6 +131,16 @@ namespace LogicPuzzle
             mCircuit.Add(ShowComponent(new Components.Not()));
         }
 
+        private void bitDisplayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(ShowComponent(new Components.DigitalDisplay(4)));
+        }
+
+        private void bitDisplayToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(ShowComponent(new Components.DigitalDisplay(8)));
+        }
+
         private string GetNameWithoutExtension(string filename)
         {
             System.IO.FileInfo info = new System.IO.FileInfo(filename);
@@ -186,5 +196,6 @@ namespace LogicPuzzle
             MyToolStripButton b = sender as MyToolStripButton;
             b.Component.DeleteComponent();
         }
+
     }
 }
