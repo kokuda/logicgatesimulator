@@ -41,12 +41,14 @@
             this.shortVericalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shortHorizontalWireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gatesToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.notToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.andToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userCreatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bitDisplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bitDisplayToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -55,8 +57,6 @@
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.bitDisplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bitDisplayToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -161,56 +161,70 @@
             this.orToolStripMenuItem,
             this.nandToolStripMenuItem,
             this.xorToolStripMenuItem,
-            this.userCreatedToolStripMenuItem,
             this.bitDisplayToolStripMenuItem,
-            this.bitDisplayToolStripMenuItem1});
+            this.bitDisplayToolStripMenuItem1,
+            this.userCreatedToolStripMenuItem});
             this.gatesToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("gatesToolStripDropDownButton.Image")));
             this.gatesToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.gatesToolStripDropDownButton.Name = "gatesToolStripDropDownButton";
             this.gatesToolStripDropDownButton.Size = new System.Drawing.Size(48, 22);
             this.gatesToolStripDropDownButton.Text = "Gates";
             // 
+            // notToolStripMenuItem
+            // 
+            this.notToolStripMenuItem.Name = "notToolStripMenuItem";
+            this.notToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.notToolStripMenuItem.Text = "Not";
+            this.notToolStripMenuItem.Click += new System.EventHandler(this.notToolStripMenuItem_Click);
+            // 
             // andToolStripMenuItem
             // 
             this.andToolStripMenuItem.Name = "andToolStripMenuItem";
-            this.andToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.andToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.andToolStripMenuItem.Text = "And";
             this.andToolStripMenuItem.Click += new System.EventHandler(this.andToolStripMenuItem_Click);
             // 
             // orToolStripMenuItem
             // 
             this.orToolStripMenuItem.Name = "orToolStripMenuItem";
-            this.orToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.orToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.orToolStripMenuItem.Text = "Or";
             this.orToolStripMenuItem.Click += new System.EventHandler(this.orToolStripMenuItem_Click);
             // 
             // nandToolStripMenuItem
             // 
             this.nandToolStripMenuItem.Name = "nandToolStripMenuItem";
-            this.nandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nandToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.nandToolStripMenuItem.Text = "Nand";
             this.nandToolStripMenuItem.Click += new System.EventHandler(this.nandToolStripMenuItem_Click);
             // 
             // xorToolStripMenuItem
             // 
             this.xorToolStripMenuItem.Name = "xorToolStripMenuItem";
-            this.xorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xorToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.xorToolStripMenuItem.Text = "Xor";
             this.xorToolStripMenuItem.Click += new System.EventHandler(this.xorToolStripMenuItem_Click);
             // 
             // userCreatedToolStripMenuItem
             // 
             this.userCreatedToolStripMenuItem.Name = "userCreatedToolStripMenuItem";
-            this.userCreatedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.userCreatedToolStripMenuItem.Text = "User Created";
+            this.userCreatedToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.userCreatedToolStripMenuItem.Text = "User Defined...";
             this.userCreatedToolStripMenuItem.Click += new System.EventHandler(this.userCreatedToolStripMenuItem_Click);
             // 
-            // notToolStripMenuItem
+            // bitDisplayToolStripMenuItem
             // 
-            this.notToolStripMenuItem.Name = "notToolStripMenuItem";
-            this.notToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.notToolStripMenuItem.Text = "Not";
-            this.notToolStripMenuItem.Click += new System.EventHandler(this.notToolStripMenuItem_Click);
+            this.bitDisplayToolStripMenuItem.Name = "bitDisplayToolStripMenuItem";
+            this.bitDisplayToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.bitDisplayToolStripMenuItem.Text = "4 Bit Display";
+            this.bitDisplayToolStripMenuItem.Click += new System.EventHandler(this.bitDisplayToolStripMenuItem_Click);
+            // 
+            // bitDisplayToolStripMenuItem1
+            // 
+            this.bitDisplayToolStripMenuItem1.Name = "bitDisplayToolStripMenuItem1";
+            this.bitDisplayToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.bitDisplayToolStripMenuItem1.Text = "8 Bit Display";
+            this.bitDisplayToolStripMenuItem1.Click += new System.EventHandler(this.bitDisplayToolStripMenuItem1_Click);
             // 
             // timer1
             // 
@@ -274,20 +288,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // bitDisplayToolStripMenuItem
-            // 
-            this.bitDisplayToolStripMenuItem.Name = "bitDisplayToolStripMenuItem";
-            this.bitDisplayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.bitDisplayToolStripMenuItem.Text = "4 Bit Display";
-            this.bitDisplayToolStripMenuItem.Click += new System.EventHandler(this.bitDisplayToolStripMenuItem_Click);
-            // 
-            // bitDisplayToolStripMenuItem1
-            // 
-            this.bitDisplayToolStripMenuItem1.Name = "bitDisplayToolStripMenuItem1";
-            this.bitDisplayToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.bitDisplayToolStripMenuItem1.Text = "8 Bit Display";
-            this.bitDisplayToolStripMenuItem1.Click += new System.EventHandler(this.bitDisplayToolStripMenuItem1_Click);
             // 
             // Form1
             // 
