@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <component type="LogicPuzzle.Components.On" x="2" y="67">
+    <interval>1000</interval>
+  </component>
+  <component type="LogicPuzzle.Components.VerticalWire" x="182" y="46" />
+  <component type="LogicPuzzle.Components.VerticalWire" x="271" y="48" />
+  <component type="LogicPuzzle.Components.Bulb" x="182" y="26" />
+  <component type="LogicPuzzle.Components.Bulb" x="272" y="28" />
+  <component type="LogicPuzzle.Components.VerticalWire" x="361" y="49" />
+  <component type="LogicPuzzle.Components.VerticalWire" x="450" y="49" />
+  <component type="LogicPuzzle.Components.Bulb" x="362" y="30" />
+  <component type="LogicPuzzle.Components.Bulb" x="450" y="29" />
+  <component type="LogicPuzzle.Components.IC" x="92" y="87">
+    <name>1BitCounter</name>
+    <subcircuit>
+      <circuit>
+        <component type="LogicPuzzle.Components.Not" x="130" y="121" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="311" y="40" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="221" y="41" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="129" y="41" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="39" y="38" />
+        <component type="LogicPuzzle.Components.Not" x="40" y="60" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="40" y="39" />
+        <component type="LogicPuzzle.Components.IC" x="129" y="80">
+          <name>Latch</name>
+          <subcircuit>
+            <circuit>
+              <component type="LogicPuzzle.Components.And" x="154" y="66" />
+              <component type="LogicPuzzle.Components.And" x="154" y="106" />
+              <component type="LogicPuzzle.Components.ShortHorizontalWire" x="107" y="106" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="107" y="107" />
+              <component type="LogicPuzzle.Components.ShortVerticalWire" x="64" y="67" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="108" y="146" />
+              <component type="LogicPuzzle.Components.HorizontalWire" x="63" y="66" />
+              <component type="LogicPuzzle.Components.Nand" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
+              <component type="LogicPuzzle.Components.IC" x="243" y="86">
+                <name>SR-FlipFlop</name>
+                <subcircuit>
+                  <circuit>
+                    <component type="LogicPuzzle.Components.IC" x="123" y="171">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.IC" x="122" y="89">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="212" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="256" y="150" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="32" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="33" y="192" />
+                  </circuit>
+                </subcircuit>
+              </component>
+              <component type="LogicPuzzle.Components.IC+Input" x="-24" y="45" />
+              <component type="LogicPuzzle.Components.IC+Input" x="17" y="167" />
+              <component type="LogicPuzzle.Components.IC+Output" x="333" y="106" />
+            </circuit>
+          </subcircuit>
+        </component>
+        <component type="LogicPuzzle.Components.IC" x="219" y="80">
+          <name>Latch</name>
+          <subcircuit>
+            <circuit>
+              <component type="LogicPuzzle.Components.And" x="154" y="66" />
+              <component type="LogicPuzzle.Components.And" x="154" y="106" />
+              <component type="LogicPuzzle.Components.ShortHorizontalWire" x="107" y="106" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="107" y="107" />
+              <component type="LogicPuzzle.Components.ShortVerticalWire" x="64" y="67" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="108" y="146" />
+              <component type="LogicPuzzle.Components.HorizontalWire" x="63" y="66" />
+              <component type="LogicPuzzle.Components.Nand" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
+              <component type="LogicPuzzle.Components.IC" x="243" y="86">
+                <name>SR-FlipFlop</name>
+                <subcircuit>
+                  <circuit>
+                    <component type="LogicPuzzle.Components.IC" x="123" y="171">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.IC" x="122" y="89">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="212" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="256" y="150" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="32" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="33" y="192" />
+                  </circuit>
+                </subcircuit>
+              </component>
+              <component type="LogicPuzzle.Components.IC+Input" x="-24" y="45" />
+              <component type="LogicPuzzle.Components.IC+Input" x="17" y="167" />
+              <component type="LogicPuzzle.Components.IC+Output" x="333" y="106" />
+            </circuit>
+          </subcircuit>
+        </component>
+        <component type="LogicPuzzle.Components.ShortVerticalWire" x="129" y="119" />
+        <component type="LogicPuzzle.Components.ShortVerticalWire" x="220" y="121" />
+        <component type="LogicPuzzle.Components.IC+Input" x="38" y="100" />
+        <component type="LogicPuzzle.Components.IC+Output" x="311" y="61" />
+      </circuit>
+    </subcircuit>
+  </component>
+  <component type="LogicPuzzle.Components.IC" x="181" y="88">
+    <name>1BitCounter</name>
+    <subcircuit>
+      <circuit>
+        <component type="LogicPuzzle.Components.Not" x="130" y="121" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="311" y="40" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="221" y="41" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="129" y="41" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="39" y="38" />
+        <component type="LogicPuzzle.Components.Not" x="40" y="60" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="40" y="39" />
+        <component type="LogicPuzzle.Components.IC" x="129" y="80">
+          <name>Latch</name>
+          <subcircuit>
+            <circuit>
+              <component type="LogicPuzzle.Components.And" x="154" y="66" />
+              <component type="LogicPuzzle.Components.And" x="154" y="106" />
+              <component type="LogicPuzzle.Components.ShortHorizontalWire" x="107" y="106" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="107" y="107" />
+              <component type="LogicPuzzle.Components.ShortVerticalWire" x="64" y="67" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="108" y="146" />
+              <component type="LogicPuzzle.Components.HorizontalWire" x="63" y="66" />
+              <component type="LogicPuzzle.Components.Nand" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
+              <component type="LogicPuzzle.Components.IC" x="243" y="86">
+                <name>SR-FlipFlop</name>
+                <subcircuit>
+                  <circuit>
+                    <component type="LogicPuzzle.Components.IC" x="123" y="171">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.IC" x="122" y="89">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="212" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="256" y="150" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="32" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="33" y="192" />
+                  </circuit>
+                </subcircuit>
+              </component>
+              <component type="LogicPuzzle.Components.IC+Input" x="-24" y="45" />
+              <component type="LogicPuzzle.Components.IC+Input" x="17" y="167" />
+              <component type="LogicPuzzle.Components.IC+Output" x="333" y="106" />
+            </circuit>
+          </subcircuit>
+        </component>
+        <component type="LogicPuzzle.Components.IC" x="219" y="80">
+          <name>Latch</name>
+          <subcircuit>
+            <circuit>
+              <component type="LogicPuzzle.Components.And" x="154" y="66" />
+              <component type="LogicPuzzle.Components.And" x="154" y="106" />
+              <component type="LogicPuzzle.Components.ShortHorizontalWire" x="107" y="106" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="107" y="107" />
+              <component type="LogicPuzzle.Components.ShortVerticalWire" x="64" y="67" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="108" y="146" />
+              <component type="LogicPuzzle.Components.HorizontalWire" x="63" y="66" />
+              <component type="LogicPuzzle.Components.Nand" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
+              <component type="LogicPuzzle.Components.IC" x="243" y="86">
+                <name>SR-FlipFlop</name>
+                <subcircuit>
+                  <circuit>
+                    <component type="LogicPuzzle.Components.IC" x="123" y="171">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.IC" x="122" y="89">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="212" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="256" y="150" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="32" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="33" y="192" />
+                  </circuit>
+                </subcircuit>
+              </component>
+              <component type="LogicPuzzle.Components.IC+Input" x="-24" y="45" />
+              <component type="LogicPuzzle.Components.IC+Input" x="17" y="167" />
+              <component type="LogicPuzzle.Components.IC+Output" x="333" y="106" />
+            </circuit>
+          </subcircuit>
+        </component>
+        <component type="LogicPuzzle.Components.ShortVerticalWire" x="129" y="119" />
+        <component type="LogicPuzzle.Components.ShortVerticalWire" x="220" y="121" />
+        <component type="LogicPuzzle.Components.IC+Input" x="38" y="100" />
+        <component type="LogicPuzzle.Components.IC+Output" x="311" y="61" />
+      </circuit>
+    </subcircuit>
+  </component>
+  <component type="LogicPuzzle.Components.IC" x="272" y="89">
+    <name>1BitCounter</name>
+    <subcircuit>
+      <circuit>
+        <component type="LogicPuzzle.Components.Not" x="130" y="121" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="311" y="40" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="221" y="41" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="129" y="41" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="39" y="38" />
+        <component type="LogicPuzzle.Components.Not" x="40" y="60" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="40" y="39" />
+        <component type="LogicPuzzle.Components.IC" x="129" y="80">
+          <name>Latch</name>
+          <subcircuit>
+            <circuit>
+              <component type="LogicPuzzle.Components.And" x="154" y="66" />
+              <component type="LogicPuzzle.Components.And" x="154" y="106" />
+              <component type="LogicPuzzle.Components.ShortHorizontalWire" x="107" y="106" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="107" y="107" />
+              <component type="LogicPuzzle.Components.ShortVerticalWire" x="64" y="67" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="108" y="146" />
+              <component type="LogicPuzzle.Components.HorizontalWire" x="63" y="66" />
+              <component type="LogicPuzzle.Components.Nand" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
+              <component type="LogicPuzzle.Components.IC" x="243" y="86">
+                <name>SR-FlipFlop</name>
+                <subcircuit>
+                  <circuit>
+                    <component type="LogicPuzzle.Components.IC" x="123" y="171">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.IC" x="122" y="89">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="212" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="256" y="150" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="32" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="33" y="192" />
+                  </circuit>
+                </subcircuit>
+              </component>
+              <component type="LogicPuzzle.Components.IC+Input" x="-24" y="45" />
+              <component type="LogicPuzzle.Components.IC+Input" x="17" y="167" />
+              <component type="LogicPuzzle.Components.IC+Output" x="333" y="106" />
+            </circuit>
+          </subcircuit>
+        </component>
+        <component type="LogicPuzzle.Components.IC" x="219" y="80">
+          <name>Latch</name>
+          <subcircuit>
+            <circuit>
+              <component type="LogicPuzzle.Components.And" x="154" y="66" />
+              <component type="LogicPuzzle.Components.And" x="154" y="106" />
+              <component type="LogicPuzzle.Components.ShortHorizontalWire" x="107" y="106" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="107" y="107" />
+              <component type="LogicPuzzle.Components.ShortVerticalWire" x="64" y="67" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="108" y="146" />
+              <component type="LogicPuzzle.Components.HorizontalWire" x="63" y="66" />
+              <component type="LogicPuzzle.Components.Nand" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
+              <component type="LogicPuzzle.Components.IC" x="243" y="86">
+                <name>SR-FlipFlop</name>
+                <subcircuit>
+                  <circuit>
+                    <component type="LogicPuzzle.Components.IC" x="123" y="171">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.IC" x="122" y="89">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="212" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="256" y="150" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="32" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="33" y="192" />
+                  </circuit>
+                </subcircuit>
+              </component>
+              <component type="LogicPuzzle.Components.IC+Input" x="-24" y="45" />
+              <component type="LogicPuzzle.Components.IC+Input" x="17" y="167" />
+              <component type="LogicPuzzle.Components.IC+Output" x="333" y="106" />
+            </circuit>
+          </subcircuit>
+        </component>
+        <component type="LogicPuzzle.Components.ShortVerticalWire" x="129" y="119" />
+        <component type="LogicPuzzle.Components.ShortVerticalWire" x="220" y="121" />
+        <component type="LogicPuzzle.Components.IC+Input" x="38" y="100" />
+        <component type="LogicPuzzle.Components.IC+Output" x="311" y="61" />
+      </circuit>
+    </subcircuit>
+  </component>
+  <component type="LogicPuzzle.Components.IC" x="360" y="89">
+    <name>1BitCounter</name>
+    <subcircuit>
+      <circuit>
+        <component type="LogicPuzzle.Components.Not" x="130" y="121" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="311" y="40" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="221" y="41" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="129" y="41" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="39" y="38" />
+        <component type="LogicPuzzle.Components.Not" x="40" y="60" />
+        <component type="LogicPuzzle.Components.HorizontalWire" x="40" y="39" />
+        <component type="LogicPuzzle.Components.IC" x="129" y="80">
+          <name>Latch</name>
+          <subcircuit>
+            <circuit>
+              <component type="LogicPuzzle.Components.And" x="154" y="66" />
+              <component type="LogicPuzzle.Components.And" x="154" y="106" />
+              <component type="LogicPuzzle.Components.ShortHorizontalWire" x="107" y="106" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="107" y="107" />
+              <component type="LogicPuzzle.Components.ShortVerticalWire" x="64" y="67" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="108" y="146" />
+              <component type="LogicPuzzle.Components.HorizontalWire" x="63" y="66" />
+              <component type="LogicPuzzle.Components.Nand" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
+              <component type="LogicPuzzle.Components.IC" x="243" y="86">
+                <name>SR-FlipFlop</name>
+                <subcircuit>
+                  <circuit>
+                    <component type="LogicPuzzle.Components.IC" x="123" y="171">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.IC" x="122" y="89">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="212" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="256" y="150" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="32" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="33" y="192" />
+                  </circuit>
+                </subcircuit>
+              </component>
+              <component type="LogicPuzzle.Components.IC+Input" x="-24" y="45" />
+              <component type="LogicPuzzle.Components.IC+Input" x="17" y="167" />
+              <component type="LogicPuzzle.Components.IC+Output" x="333" y="106" />
+            </circuit>
+          </subcircuit>
+        </component>
+        <component type="LogicPuzzle.Components.IC" x="219" y="80">
+          <name>Latch</name>
+          <subcircuit>
+            <circuit>
+              <component type="LogicPuzzle.Components.And" x="154" y="66" />
+              <component type="LogicPuzzle.Components.And" x="154" y="106" />
+              <component type="LogicPuzzle.Components.ShortHorizontalWire" x="107" y="106" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="107" y="107" />
+              <component type="LogicPuzzle.Components.ShortVerticalWire" x="64" y="67" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="108" y="146" />
+              <component type="LogicPuzzle.Components.HorizontalWire" x="63" y="66" />
+              <component type="LogicPuzzle.Components.Nand" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
+              <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
+              <component type="LogicPuzzle.Components.IC" x="243" y="86">
+                <name>SR-FlipFlop</name>
+                <subcircuit>
+                  <circuit>
+                    <component type="LogicPuzzle.Components.IC" x="123" y="171">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.IC" x="122" y="89">
+                      <name>nor</name>
+                      <subcircuit>
+                        <circuit>
+                          <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+                          <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+                          <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+                          <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+                          <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+                        </circuit>
+                      </subcircuit>
+                    </component>
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+                    <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+                    <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+                    <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+                    <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="212" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Output" x="256" y="150" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="32" y="68" />
+                    <component type="LogicPuzzle.Components.IC+Input" x="33" y="192" />
+                  </circuit>
+                </subcircuit>
+              </component>
+              <component type="LogicPuzzle.Components.IC+Input" x="-24" y="45" />
+              <component type="LogicPuzzle.Components.IC+Input" x="17" y="167" />
+              <component type="LogicPuzzle.Components.IC+Output" x="333" y="106" />
+            </circuit>
+          </subcircuit>
+        </component>
+        <component type="LogicPuzzle.Components.ShortVerticalWire" x="129" y="119" />
+        <component type="LogicPuzzle.Components.ShortVerticalWire" x="220" y="121" />
+        <component type="LogicPuzzle.Components.IC+Input" x="38" y="100" />
+        <component type="LogicPuzzle.Components.IC+Output" x="311" y="61" />
+      </circuit>
+    </subcircuit>
+  </component>
+</circuit>

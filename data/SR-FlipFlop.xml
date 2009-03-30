@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <component type="LogicPuzzle.Components.IC" x="123" y="171">
+    <name>nor</name>
+    <subcircuit>
+      <circuit>
+        <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+        <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+        <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+        <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+        <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+      </circuit>
+    </subcircuit>
+  </component>
+  <component type="LogicPuzzle.Components.IC" x="122" y="89">
+    <name>nor</name>
+    <subcircuit>
+      <circuit>
+        <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+        <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+        <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+        <component type="LogicPuzzle.Components.IC+Input" x="48" y="55" />
+        <component type="LogicPuzzle.Components.IC+Input" x="48" y="95" />
+        <component type="LogicPuzzle.Components.IC+Output" x="317" y="95" />
+      </circuit>
+    </subcircuit>
+  </component>
+  <component type="LogicPuzzle.Components.HorizontalWire" x="123" y="152" />
+  <component type="LogicPuzzle.Components.ShortHorizontalWire" x="214" y="171" />
+  <component type="LogicPuzzle.Components.ShortHorizontalWire" x="122" y="130" />
+  <component type="LogicPuzzle.Components.ShortVerticalWire" x="123" y="152" />
+  <component type="LogicPuzzle.Components.VerticalWire" x="213" y="111" />
+  <component type="LogicPuzzle.Components.ShortVerticalWire" x="212" y="89" />
+  <component type="LogicPuzzle.Components.HorizontalWire" x="168" y="130" />
+  <component type="LogicPuzzle.Components.VerticalWire" x="258" y="130" />
+  <component type="LogicPuzzle.Components.Bulb" x="212" y="68" />
+  <component type="LogicPuzzle.Components.Bulb" x="256" y="150" />
+  <component type="LogicPuzzle.Components.On" x="32" y="68">
+    <interval>0</interval>
+  </component>
+  <component type="LogicPuzzle.Components.On" x="33" y="192">
+    <interval>0</interval>
+  </component>
+</circuit>

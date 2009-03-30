@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <component type="LogicPuzzle.Components.Or" x="137" y="75" />
+  <component type="LogicPuzzle.Components.Nand" x="226" y="95" />
+  <component type="LogicPuzzle.Components.VerticalWire" x="227" y="95" />
+  <component type="LogicPuzzle.Components.On" x="48" y="55">
+    <interval>0</interval>
+  </component>
+  <component type="LogicPuzzle.Components.On" x="48" y="95">
+    <interval>0</interval>
+  </component>
+  <component type="LogicPuzzle.Components.Bulb" x="317" y="95" />
+</circuit>
