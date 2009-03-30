@@ -48,11 +48,16 @@ namespace LogicPuzzle.Components
 
         public override void DrawComponent(Graphics g)
         {
-            base.DrawComponent(g);
-
             Pen blackpen = new Pen(Color.Black, 1);
             Font font = new Font("Courier", 10);
-            Rectangle centerRect = new Rectangle(15, 5, Width - 30, Height - 10);
+            Rectangle centerRect = new Rectangle(10, 5, Width - 20, Height - 10);
+
+            Region excludeCenterRect = new Region(g.Clip.GetRegionData());
+            excludeCenterRect.Exclude(centerRect);
+            g.Clip = excludeCenterRect;
+            base.DrawComponent(g);
+            g.ResetClip();
+
             g.FillRectangle(Brushes.White, centerRect);
             g.DrawRectangle(blackpen, centerRect);
             g.DrawString(mName, new Font("Courier", 10), Brushes.Black, centerRect);
