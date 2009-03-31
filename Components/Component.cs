@@ -58,7 +58,6 @@ namespace LogicPuzzle.Components
             // Create the control if it does not exist and initialize it.
             if (mControl == null || mControl.IsDisposed)
             {
-                // mControl = new ComponentControl(this);
                 mControl = CreateComponentControl();
             }
             mControl.Bounds = mBounds;
@@ -159,14 +158,14 @@ namespace LogicPuzzle.Components
             g.DrawEllipse(blackpen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
         }
 
-        public void MoveComponent()
+        public void OnComponentMove()
         {
             // The component may have moved.
             // Reconnect any connections in the circuit.
             mCircuit.ConnectComponent(this);
         }
 
-        public void DeleteComponent()
+        public void OnComponentDelete()
         {
             mCircuit.Remove(this);
         }

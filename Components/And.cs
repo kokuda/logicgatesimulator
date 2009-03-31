@@ -6,6 +6,9 @@ using System.Drawing;
 
 namespace LogicPuzzle.Components
 {
+    ///////////////////////////////////////////////////////////////////////
+    // And : Component
+    ///////////////////////////////////////////////////////////////////////
     class And : Component
     {
         public And()
@@ -16,14 +19,6 @@ namespace LogicPuzzle.Components
             Connections[0].Location = new Point(5, 5);
             Connections[1].Location = new Point (5, this.Height - 5);
             Connections[2].Location = new Point(this.Width - 5, this.Height / 2);
-
-            System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("LogicPuzzle.Resources.And.png");
-            mBitmap = new Bitmap(stream);
-        }
-
-        ~And()
-        {
-            mBitmap.Dispose();
         }
 
         public override void Execute()
@@ -32,24 +27,47 @@ namespace LogicPuzzle.Components
             base.Execute();
         }
 
-        public override void DrawComponent(Graphics g)
+        protected override ComponentControl CreateComponentControl()
         {
-            //base.DrawComponent(g);
+            return new BitmapControl(this, "LogicPuzzle.Resources.And.png");
+        }
+    }
 
-            for (int i = 0; i < mConnections.Length; ++i)
+    ///////////////////////////////////////////////////////////////////////
+    // BitmapControl : ComponentControl
+    ///////////////////////////////////////////////////////////////////////
+    class BitmapControl : ComponentControl
+    {
+        public BitmapControl(Component and, string bitmapResource)
+            : base(and)
+        {
+            mComponent = and;
+            System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(bitmapResource);
+            mBitmap = new Bitmap(stream);
+        }
+
+        ~BitmapControl()
+        {
+            mBitmap.Dispose();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            for (int i = 0; i < mComponent.Connections.Length; ++i)
             {
-                Color c = GetValue(i) ? Color.Red : Color.Black;
-                int w = mConnections[i].Connections.Count > 0 ? 2 : 1;
+                Color c = mComponent.GetValue(i) ? Color.Red : Color.Black;
+                int w = mComponent.Connections[i].Connections.Count > 0 ? 2 : 1;
                 Pen pen = new Pen(c, w);
 
-                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mConnections[i].Location, new Size(2, 2)), new Size(4, 4)));
-                g.DrawLine(pen, mConnections[i].Location, new Point(this.Width / 2, mConnections[i].Location.Y));
+                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mComponent.Connections[i].Location, new Size(2, 2)), new Size(4, 4)));
+                g.DrawLine(pen, mComponent.Connections[i].Location, new Point(this.Width / 2, mComponent.Connections[i].Location.Y));
             }
 
             g.DrawImage(mBitmap, 0, 0);
-            //g.DrawString("AND", new Font("Courier", 10), Brushes.Black, this.Width / 2, this.Height / 2);
         }
 
-        Bitmap mBitmap;
+        private Component mComponent;
+        private Bitmap mBitmap;
     }
 }

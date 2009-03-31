@@ -71,39 +71,6 @@ namespace LogicPuzzle.Components
             base.Execute();
         }
 
-        public override void DrawComponent(Graphics g)
-        {
-            Pen blackpen = new Pen(Color.Black, 1);
-
-            Rectangle centerRect = new Rectangle(10, 5, Width - 20, Height - 10);
-
-            for (int i = 0; i < mConnections.Length - 1; ++i)
-            {
-                Color c = GetValue(i) ? Color.Red : Color.Black;
-                int w = mConnections[i].Connections.Count > 0 ? 2 : 1;
-                Pen pen = new Pen(c, w);
-
-                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mConnections[i].Location, new Size(2, 2)), new Size(4, 4)));
-                g.DrawLine(pen, mConnections[i].Location, new Point(centerRect.Left, mConnections[i].Location.Y));
-            }
-
-            // Draw the latch input differently
-            {
-                int latchInput = mConnections.Length - 1;
-                Color c = GetValue(latchInput) ? Color.Red : Color.Black;
-                int w = mConnections[latchInput].Connections.Count > 0 ? 2 : 1;
-                Pen pen = new Pen(c, w);
-                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mConnections[latchInput].Location, new Size(2, 2)), new Size(4, 4)));
-                g.DrawLine(pen, mConnections[latchInput].Location, new Point(centerRect.Right, mConnections[latchInput].Location.Y));
-            }
-
-            g.FillRectangle(Brushes.White, centerRect);
-            g.DrawRectangle(blackpen, centerRect);
-
-            centerRect.Inflate(-2, -2);
-            g.DrawString(Convert.ToString(mValue, mNumberBase), new Font("Courier", 10), Brushes.Black, centerRect);
-        }
-
         public override void Serialize(System.Xml.XmlWriter writer)
         {
             writer.WriteElementString("inputs", (mConnections.Length-1).ToString());
@@ -140,6 +107,11 @@ namespace LogicPuzzle.Components
             set { mNumberBase = value; }
         }
 
+        public int Value
+        {
+            get { return mValue; }
+        }
+
         ///////////////////////////////////////////////////////////////////////
         // Private
         ///////////////////////////////////////////////////////////////////////
@@ -173,6 +145,40 @@ namespace LogicPuzzle.Components
                     mParent.NumberBase = 10;
                 });
                 menu.Items.Add(dec);
+            }
+
+            protected override void OnPaint(PaintEventArgs e)
+            {
+                Graphics g = e.Graphics;
+                Pen blackpen = new Pen(Color.Black, 1);
+
+                Rectangle centerRect = new Rectangle(10, 5, Width - 20, Height - 10);
+
+                for (int i = 0; i < mParent.Connections.Length - 1; ++i)
+                {
+                    Color c = mParent.GetValue(i) ? Color.Red : Color.Black;
+                    int w = mParent.Connections[i].Connections.Count > 0 ? 2 : 1;
+                    Pen pen = new Pen(c, w);
+
+                    g.DrawEllipse(pen, new Rectangle(Point.Subtract(mParent.Connections[i].Location, new Size(2, 2)), new Size(4, 4)));
+                    g.DrawLine(pen, mParent.Connections[i].Location, new Point(centerRect.Left, mParent.Connections[i].Location.Y));
+                }
+
+                // Draw the latch input differently
+                {
+                    int latchInput = mParent.Connections.Length - 1;
+                    Color c = mParent.GetValue(latchInput) ? Color.Red : Color.Black;
+                    int w = mParent.Connections[latchInput].Connections.Count > 0 ? 2 : 1;
+                    Pen pen = new Pen(c, w);
+                    g.DrawEllipse(pen, new Rectangle(Point.Subtract(mParent.Connections[latchInput].Location, new Size(2, 2)), new Size(4, 4)));
+                    g.DrawLine(pen, mParent.Connections[latchInput].Location, new Point(centerRect.Right, mParent.Connections[latchInput].Location.Y));
+                }
+
+                g.FillRectangle(Brushes.White, centerRect);
+                g.DrawRectangle(blackpen, centerRect);
+
+                centerRect.Inflate(-2, -2);
+                g.DrawString(Convert.ToString(mParent.Value, mParent.NumberBase), new Font("Courier", 10), Brushes.Black, centerRect);
             }
 
             DigitalDisplay mParent;

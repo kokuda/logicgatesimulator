@@ -67,9 +67,30 @@ namespace LogicPuzzle.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Nand {
+            get {
+                object obj = ResourceManager.GetObject("Nand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Not {
+            get {
+                object obj = ResourceManager.GetObject("Not", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Or {
             get {
                 object obj = ResourceManager.GetObject("Or", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Xor {
+            get {
+                object obj = ResourceManager.GetObject("Xor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

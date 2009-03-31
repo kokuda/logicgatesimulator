@@ -24,10 +24,9 @@ namespace LogicPuzzle.Components
             base.Execute();
         }
 
-        public override void DrawComponent(Graphics g)
+        protected override ComponentControl CreateComponentControl()
         {
-            base.DrawComponent(g);
-            g.DrawString("XOR", new Font("Courier", 10), Brushes.Black, this.Width / 2, this.Height / 2);
+            return new BitmapControl(this, "LogicPuzzle.Resources.Xor.png");
         }
     }
 }

@@ -121,7 +121,16 @@
   <data name="And" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\And.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Nand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nand.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Not" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Not.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Or" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Or.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Xor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Xor.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

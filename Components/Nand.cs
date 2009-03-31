@@ -24,19 +24,9 @@ namespace LogicPuzzle.Components
             base.Execute();
         }
 
-        public override void DrawComponent(Graphics g)
+        protected override ComponentControl CreateComponentControl()
         {
-            base.DrawComponent(g);
-            g.DrawString("NAND", new Font("Courier", 10), Brushes.Black, this.Width / 2, this.Height / 2);
+            return new BitmapControl(this, "LogicPuzzle.Resources.Nand.png");
         }
-
-        //protected override void DrawComponent(Graphics g)
-        //{
-        //    Pen p = new Pen(Color.Black);
-        //    g.DrawEllipse(p, this.Width/3, this.Height/3, this.Width/3, this.Height/3);
-        //    g.DrawEllipse(p, new Rectangle(InputLocations[0], new Size(4, 4)));
-        //    g.DrawEllipse(p, new Rectangle(InputLocations[1], new Size(4, 4)));
-        //    g.DrawEllipse(p, new Rectangle(OutputLocations[0], new Size(4, 4)));
-        //}
     }
 }

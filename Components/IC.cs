@@ -46,23 +46,6 @@ namespace LogicPuzzle.Components
             base.Execute();
         }
 
-        public override void DrawComponent(Graphics g)
-        {
-            Pen blackpen = new Pen(Color.Black, 1);
-            Font font = new Font("Courier", 10);
-            Rectangle centerRect = new Rectangle(10, 5, Width - 20, Height - 10);
-
-            Region excludeCenterRect = new Region(g.Clip.GetRegionData());
-            excludeCenterRect.Exclude(centerRect);
-            g.Clip = excludeCenterRect;
-            base.DrawComponent(g);
-            g.ResetClip();
-
-            g.FillRectangle(Brushes.White, centerRect);
-            g.DrawRectangle(blackpen, centerRect);
-            g.DrawString(mName, new Font("Courier", 10), Brushes.Black, centerRect);
-        }
-
         protected override ComponentControl CreateComponentControl()
         {
             return new ICComponentControl(this);
@@ -203,6 +186,9 @@ namespace LogicPuzzle.Components
             }
         }
 
+        ///////////////////////////////////////////////////////////////////////
+        // IOComponentControl : ComponentControl
+        ///////////////////////////////////////////////////////////////////////
         private class ICComponentControl : ComponentControl
         {
             public ICComponentControl(IC component)
@@ -245,9 +231,32 @@ namespace LogicPuzzle.Components
                 f.Dispose();
             }
 
+            protected override void OnPaint(PaintEventArgs e)
+            {
+                Graphics g = e.Graphics;
+                Pen blackpen = new Pen(Color.Black, 1);
+                Font font = new Font("Courier", 10);
+                Rectangle centerRect = new Rectangle(10, 5, Width - 20, Height - 10);
+
+                Region excludeCenterRect = new Region(g.Clip.GetRegionData());
+                excludeCenterRect.Exclude(centerRect);
+                g.Clip = excludeCenterRect;
+                // Consider taking the code from BitmapComponent for drawing horizontal lines
+                // instead of using base.OnPaint.
+                base.OnPaint(e);
+                g.ResetClip();
+
+                g.FillRectangle(Brushes.White, centerRect);
+                g.DrawRectangle(blackpen, centerRect);
+                g.DrawString(mComponent.Name, new Font("Courier", 10), Brushes.Black, centerRect);
+            }
+
             private IC mComponent;
         }
 
+        ///////////////////////////////////////////////////////////////////////
+        // IOComponent : Component
+        ///////////////////////////////////////////////////////////////////////
         private class IOComponent : Component
         {
             // Used by the deserializer
@@ -270,6 +279,9 @@ namespace LogicPuzzle.Components
             protected Connection mIOConnection;
         }
 
+        ///////////////////////////////////////////////////////////////////////
+        // Input : IOComponent
+        ///////////////////////////////////////////////////////////////////////
         // Special IO components to interface between the internal
         // and external circuits.
         // We could make these more like wires, and make the values
@@ -317,6 +329,9 @@ namespace LogicPuzzle.Components
             }
         }
 
+        ///////////////////////////////////////////////////////////////////////
+        // Output : IOComponent
+        ///////////////////////////////////////////////////////////////////////
         private class Output : IOComponent
         {
             // Used by the deserializer

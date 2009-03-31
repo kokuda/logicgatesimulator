@@ -51,6 +51,7 @@
     <Compile Include="Circuit.cs">
     </Compile>
     <Compile Include="Components\And.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Bulb.cs">
     </Compile>
@@ -113,6 +114,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Or.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Not.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Nand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Xor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

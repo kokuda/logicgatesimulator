@@ -14,10 +14,10 @@ namespace LogicPuzzle.Components
 
         // The component may have been moved.
         // This should update any required information and check the connections.
-        void MoveComponent();
+        void OnComponentMove();
 
         // Delete the component
-        void DeleteComponent();
+        void OnComponentDelete();
     }
 
     public class ComponentControl : Control
@@ -34,7 +34,7 @@ namespace LogicPuzzle.Components
         public void DeleteComponent()
         {
             // Delete the logical Component
-            mControlInterface.DeleteComponent();
+            mControlInterface.OnComponentDelete();
 
             // Delete the visual component
             if (Parent != null)
@@ -74,7 +74,7 @@ namespace LogicPuzzle.Components
             if (e.Button == MouseButtons.Left)
             {
                 mMouseDown = false;
-                mControlInterface.MoveComponent();
+                mControlInterface.OnComponentMove();
             }
             base.OnMouseUp(e);
         }
