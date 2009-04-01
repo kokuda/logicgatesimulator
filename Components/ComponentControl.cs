@@ -7,35 +7,19 @@ using System.Drawing;
 
 namespace LogicPuzzle.Components
 {
-    public interface ComponentControlInterface
-    {
-        // Draw the component
-        void DrawComponent(Graphics g);
-
-        // The component may have been moved.
-        // This should update any required information and check the connections.
-        void OnComponentMove();
-
-        // Delete the component
-        void OnComponentDelete();
-    }
-
     public class ComponentControl : Control
     {
-        public ComponentControl(ComponentControlInterface controlInterface)
+        public ComponentControl(Component component)
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             BackColor = Color.Transparent;
 
-            mControlInterface = controlInterface;
+            mComponent = component;
             mMouseDown = false;
         }
 
         public void DeleteComponent()
         {
-            // Delete the logical Component
-            mControlInterface.OnComponentDelete();
-
             // Delete the visual component
             if (Parent != null)
             {
@@ -46,13 +30,29 @@ namespace LogicPuzzle.Components
             }
             Dispose();
             Parent = null;
+
+            // Remove the logical Component
+            mComponent.Circuit.Remove(mComponent);
+            mComponent = null;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            //e.Graphics.SetClip(Parent.DisplayRectangle);
             base.OnPaint(e);
-            mControlInterface.DrawComponent(e.Graphics);
+
+            Pen blackpen = new Pen(Color.Black, 1);
+            Graphics g = e.Graphics;
+
+            for (int i = 0; i < mComponent.GetComponent().Connections.Length; ++i)
+            {
+                Color c = mComponent.GetComponent().GetValue(i) ? Color.Red : Color.Black;
+                int w = mComponent.GetComponent().Connections[i].Connections.Count > 0 ? 2 : 1;
+                Pen pen = new Pen(c, w);
+
+                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mComponent.GetComponent().Connections[i].Location, new Size(2, 2)), new Size(4, 4)));
+                g.DrawLine(pen, mComponent.GetComponent().Connections[i].Location, new Point(this.Width / 2, this.Height / 2));
+            }
+            g.DrawEllipse(blackpen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -74,7 +74,10 @@ namespace LogicPuzzle.Components
             if (e.Button == MouseButtons.Left)
             {
                 mMouseDown = false;
-                mControlInterface.OnComponentMove();
+
+                // The component may have moved.
+                // Reconnect any connections in the circuit.
+                mComponent.Circuit.ConnectComponent(mComponent);
             }
             base.OnMouseUp(e);
         }
@@ -120,7 +123,7 @@ namespace LogicPuzzle.Components
             // we need to go through the ComponentControlInterface for that.
         }
 
-        private ComponentControlInterface mControlInterface;
+        private Component mComponent;
         private bool mMouseDown;
         private int mMouseX;
         private int mMouseY;

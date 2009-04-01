@@ -8,7 +8,7 @@ using System.Drawing;
 namespace LogicPuzzle.Components
 {
     // Handle generic logic component behaviours, such as drag and drop.
-    public class Component : ComponentControlInterface
+    public class Component
     {
         // Default constructor needed so that Visual Studio doesn't fail
         // when attempting to open the components in design mode.
@@ -139,35 +139,9 @@ namespace LogicPuzzle.Components
         {
         }
 
-        ///////////////////////////////////////////////////////////////////////
-        // ComponentControlInterface implementation
-        ///////////////////////////////////////////////////////////////////////
-        public virtual void DrawComponent(Graphics g)
+        public Component GetComponent()
         {
-            Pen blackpen = new Pen(Color.Black, 1);
-
-            for (int i = 0; i < mConnections.Length; ++i)
-            {
-                Color c = GetValue(i) ? Color.Red : Color.Black;
-                int w = mConnections[i].Connections.Count > 0 ? 2 : 1;
-                Pen pen = new Pen(c, w);
-
-                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mConnections[i].Location, new Size(2, 2)), new Size(4, 4)));
-                g.DrawLine(pen, mConnections[i].Location, new Point(this.Width / 2, this.Height / 2));
-            }
-            g.DrawEllipse(blackpen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
-        }
-
-        public void OnComponentMove()
-        {
-            // The component may have moved.
-            // Reconnect any connections in the circuit.
-            mCircuit.ConnectComponent(this);
-        }
-
-        public void OnComponentDelete()
-        {
-            mCircuit.Remove(this);
+            return this;
         }
 
         ///////////////////////////////////////////////////////////////////////
