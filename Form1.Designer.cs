@@ -1,4 +1,4 @@
-﻿namespace LogicPuzzle
+﻿namespace LogicSim
 {
     partial class Form1
     {

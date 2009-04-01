@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace LogicPuzzle.Components
+namespace LogicSim.Components
 {
     // Handle generic logic component behaviours, such as drag and drop.
     public class Component

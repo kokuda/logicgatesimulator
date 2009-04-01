@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace LogicPuzzle.Components
+namespace LogicSim.Components
 {
     class Not : Component
     {
@@ -25,7 +25,7 @@ namespace LogicPuzzle.Components
 
         protected override ComponentControl CreateComponentControl()
         {
-            return new BitmapControl(this, "LogicPuzzle.Resources.Not.png");
+            return new BitmapControl(this, "LogicSim.Resources.Not.png");
         }
     }
 }

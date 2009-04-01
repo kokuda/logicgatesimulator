@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace LogicPuzzle.Components
+namespace LogicSim.Components
 {
     // Dynamic component built from a circuit of multiple user defined components.
     class IC : Component

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <circuit>
-  <component type="LogicPuzzle.Components.On" x="3" y="64">
+  <component type="LogicSim.Components.On" x="3" y="64">
     <interval>1000</interval>
   </component>
-  <component type="LogicPuzzle.Components.Nand" x="94" y="84" />
-  <component type="LogicPuzzle.Components.VerticalWire" x="92" y="85" />
-  <component type="LogicPuzzle.Components.Bulb" x="185" y="85" />
+  <component type="LogicSim.Components.Nand" x="94" y="84" />
+  <component type="LogicSim.Components.VerticalWire" x="92" y="85" />
+  <component type="LogicSim.Components.Bulb" x="185" y="85" />
 </circuit>

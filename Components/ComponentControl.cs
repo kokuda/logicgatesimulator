@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace LogicPuzzle.Components
+namespace LogicSim.Components
 {
     public class ComponentControl : Control
     {

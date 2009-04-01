@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace LogicPuzzle
+namespace LogicSim
 {
     // Contains a set of components that, together, can make a circuit
     public class Circuit

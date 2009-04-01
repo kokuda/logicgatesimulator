@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace LogicPuzzle.Components
+namespace LogicSim.Components
 {
     public class Nand : Component
     {
@@ -26,7 +26,7 @@ namespace LogicPuzzle.Components
 
         protected override ComponentControl CreateComponentControl()
         {
-            return new BitmapControl(this, "LogicPuzzle.Resources.Nand.png");
+            return new BitmapControl(this, "LogicSim.Resources.Nand.png");
         }
     }
 }

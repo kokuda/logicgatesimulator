@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual C# Express 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicPuzzle", "LogicPuzzle.csproj", "{E5DF8677-078A-4F74-9E8A-4C194231D87C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicSim", "LogicSim.csproj", "{E5DF8677-078A-4F74-9E8A-4C194231D87C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <circuit>
-  <component type="LogicPuzzle.Components.Bulb" x="372" y="122" />
-  <component type="LogicPuzzle.Components.And" x="283" y="122" />
-  <component type="LogicPuzzle.Components.ShortVerticalWire" x="284" y="164" />
-  <component type="LogicPuzzle.Components.Nand" x="193" y="165" />
-  <component type="LogicPuzzle.Components.VerticalWire" x="194" y="123" />
-  <component type="LogicPuzzle.Components.ShortVerticalWire" x="195" y="102" />
-  <component type="LogicPuzzle.Components.VerticalWire" x="194" y="142" />
-  <component type="LogicPuzzle.Components.ShortVerticalWire" x="195" y="182" />
-  <component type="LogicPuzzle.Components.Or" x="195" y="102" />
-  <component type="LogicPuzzle.Components.On" x="103" y="79">
+  <component type="LogicSim.Components.Bulb" x="372" y="122" />
+  <component type="LogicSim.Components.And" x="283" y="122" />
+  <component type="LogicSim.Components.ShortVerticalWire" x="284" y="164" />
+  <component type="LogicSim.Components.Nand" x="193" y="165" />
+  <component type="LogicSim.Components.VerticalWire" x="194" y="123" />
+  <component type="LogicSim.Components.ShortVerticalWire" x="195" y="102" />
+  <component type="LogicSim.Components.VerticalWire" x="194" y="142" />
+  <component type="LogicSim.Components.ShortVerticalWire" x="195" y="182" />
+  <component type="LogicSim.Components.Or" x="195" y="102" />
+  <component type="LogicSim.Components.On" x="103" y="79">
     <interval>1000</interval>
   </component>
-  <component type="LogicPuzzle.Components.On" x="102" y="185">
+  <component type="LogicSim.Components.On" x="102" y="185">
     <interval>1000</interval>
   </component>
 </circuit>
