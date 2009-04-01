@@ -236,15 +236,25 @@ namespace LogicPuzzle.Components
                 Graphics g = e.Graphics;
                 Pen blackpen = new Pen(Color.Black, 1);
                 Font font = new Font("Courier", 10);
-                Rectangle centerRect = new Rectangle(10, 5, Width - 20, Height - 10);
+                Rectangle centerRect = new Rectangle(12, 0, Width - 24, Height-1);
 
-                Region excludeCenterRect = new Region(g.Clip.GetRegionData());
-                excludeCenterRect.Exclude(centerRect);
-                g.Clip = excludeCenterRect;
-                // Consider taking the code from BitmapComponent for drawing horizontal lines
-                // instead of using base.OnPaint.
-                base.OnPaint(e);
-                g.ResetClip();
+                for (int i = 0; i < mComponent.Connections.Length; ++i)
+                {
+                    Color c = mComponent.GetValue(i) ? Color.Red : Color.Black;
+                    int w = mComponent.Connections[i].Connections.Count > 0 ? 2 : 1;
+                    Pen pen = new Pen(c, w);
+
+                    g.DrawEllipse(pen, new Rectangle(Point.Subtract(mComponent.Connections[i].Location, new Size(2, 2)), new Size(4, 4)));
+
+                    if (mComponent.Connections[i].Location.X < centerRect.Left)
+                    {
+                        g.DrawLine(pen, mComponent.Connections[i].Location, new Point(centerRect.Left, mComponent.Connections[i].Location.Y));
+                    }
+                    else
+                    {
+                        g.DrawLine(pen, mComponent.Connections[i].Location, new Point(centerRect.Right, mComponent.Connections[i].Location.Y));
+                    }
+                }
 
                 g.FillRectangle(Brushes.White, centerRect);
                 g.DrawRectangle(blackpen, centerRect);

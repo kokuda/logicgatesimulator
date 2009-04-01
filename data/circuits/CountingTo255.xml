@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <circuit>
   <component type="LogicPuzzle.Components.IC" x="150" y="80">
-    <name>4BitCounter</name>
+    <name>4 Bit Counter</name>
     <subcircuit>
       <circuit>
         <component type="LogicPuzzle.Components.VerticalWire" x="182" y="46" />
@@ -9,7 +9,7 @@
         <component type="LogicPuzzle.Components.VerticalWire" x="361" y="49" />
         <component type="LogicPuzzle.Components.VerticalWire" x="450" y="49" />
         <component type="LogicPuzzle.Components.IC" x="92" y="87">
-          <name>1BitCounter</name>
+          <name>1 Bit Counter</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.Not" x="130" y="121" />
@@ -34,11 +34,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -51,7 +51,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -99,11 +99,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -116,7 +116,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -157,7 +157,7 @@
           </subcircuit>
         </component>
         <component type="LogicPuzzle.Components.IC" x="181" y="88">
-          <name>1BitCounter</name>
+          <name>1 Bit Counter</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.Not" x="130" y="121" />
@@ -182,11 +182,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -199,7 +199,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -247,11 +247,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -264,7 +264,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -305,7 +305,7 @@
           </subcircuit>
         </component>
         <component type="LogicPuzzle.Components.IC" x="272" y="89">
-          <name>1BitCounter</name>
+          <name>1 Bit Counter</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.Not" x="130" y="121" />
@@ -330,11 +330,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -347,7 +347,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -395,11 +395,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -412,7 +412,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -453,7 +453,7 @@
           </subcircuit>
         </component>
         <component type="LogicPuzzle.Components.IC" x="360" y="89">
-          <name>1BitCounter</name>
+          <name>1 Bit Counter</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.Not" x="130" y="121" />
@@ -478,11 +478,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -495,7 +495,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -543,11 +543,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -560,7 +560,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -609,7 +609,7 @@
     </subcircuit>
   </component>
   <component type="LogicPuzzle.Components.IC" x="241" y="161">
-    <name>4BitCounter</name>
+    <name>4 Bit Counter</name>
     <subcircuit>
       <circuit>
         <component type="LogicPuzzle.Components.VerticalWire" x="182" y="46" />
@@ -617,7 +617,7 @@
         <component type="LogicPuzzle.Components.VerticalWire" x="361" y="49" />
         <component type="LogicPuzzle.Components.VerticalWire" x="450" y="49" />
         <component type="LogicPuzzle.Components.IC" x="92" y="87">
-          <name>1BitCounter</name>
+          <name>1 Bit Counter</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.Not" x="130" y="121" />
@@ -642,11 +642,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -659,7 +659,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -707,11 +707,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -724,7 +724,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -765,7 +765,7 @@
           </subcircuit>
         </component>
         <component type="LogicPuzzle.Components.IC" x="181" y="88">
-          <name>1BitCounter</name>
+          <name>1 Bit Counter</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.Not" x="130" y="121" />
@@ -790,11 +790,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -807,7 +807,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -855,11 +855,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -872,7 +872,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -913,7 +913,7 @@
           </subcircuit>
         </component>
         <component type="LogicPuzzle.Components.IC" x="272" y="89">
-          <name>1BitCounter</name>
+          <name>1 Bit Counter</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.Not" x="130" y="121" />
@@ -938,11 +938,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -955,7 +955,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -1003,11 +1003,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -1020,7 +1020,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -1061,7 +1061,7 @@
           </subcircuit>
         </component>
         <component type="LogicPuzzle.Components.IC" x="360" y="89">
-          <name>1BitCounter</name>
+          <name>1 Bit Counter</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.Not" x="130" y="121" />
@@ -1086,11 +1086,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -1103,7 +1103,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -1151,11 +1151,11 @@
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="126" />
                     <component type="LogicPuzzle.Components.VerticalWire" x="63" y="85" />
                     <component type="LogicPuzzle.Components.IC" x="243" y="86">
-                      <name>SR-FlipFlop</name>
+                      <name>SR Flip Flop</name>
                       <subcircuit>
                         <circuit>
                           <component type="LogicPuzzle.Components.IC" x="123" y="171">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />
@@ -1168,7 +1168,7 @@
                             </subcircuit>
                           </component>
                           <component type="LogicPuzzle.Components.IC" x="122" y="89">
-                            <name>nor</name>
+                            <name>NOR</name>
                             <subcircuit>
                               <circuit>
                                 <component type="LogicPuzzle.Components.Or" x="137" y="75" />

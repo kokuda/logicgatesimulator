@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <circuit>
   <component type="LogicPuzzle.Components.IC" x="125" y="59">
-    <name>2BitAdder</name>
+    <name>2 Bit Adder</name>
     <subcircuit>
       <circuit>
         <component type="LogicPuzzle.Components.IC" x="190" y="117">
-          <name>1bitadder</name>
+          <name>1 Bit Adder</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.And" x="160" y="99" />
@@ -42,7 +42,7 @@
           </subcircuit>
         </component>
         <component type="LogicPuzzle.Components.IC" x="280" y="179">
-          <name>1bitadder</name>
+          <name>1 Bit Adder</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.And" x="160" y="99" />
@@ -91,11 +91,11 @@
     </subcircuit>
   </component>
   <component type="LogicPuzzle.Components.IC" x="215" y="139">
-    <name>2BitAdder</name>
+    <name>2 Bit Adder</name>
     <subcircuit>
       <circuit>
         <component type="LogicPuzzle.Components.IC" x="190" y="117">
-          <name>1bitadder</name>
+          <name>1 Bit Adder</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.And" x="160" y="99" />
@@ -132,7 +132,7 @@
           </subcircuit>
         </component>
         <component type="LogicPuzzle.Components.IC" x="280" y="179">
-          <name>1bitadder</name>
+          <name>1 Bit Adder</name>
           <subcircuit>
             <circuit>
               <component type="LogicPuzzle.Components.And" x="160" y="99" />
