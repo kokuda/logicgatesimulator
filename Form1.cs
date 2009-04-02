@@ -27,6 +27,7 @@ namespace LogicSim
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.SaveFileDialog d = new System.Windows.Forms.SaveFileDialog();
+            d.Filter = "Component files (*.xml)|*.xml|Circuit files (*.xml)|*.xml";
             if (d.ShowDialog() == DialogResult.OK)
             {
                 System.IO.Stream s;
@@ -41,6 +42,7 @@ namespace LogicSim
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.OpenFileDialog d = new OpenFileDialog();
+            d.Filter = "Component files (*.xml)|*.xml|Circuit files (*.xml)|*.xml";
             if (d.ShowDialog() == DialogResult.OK)
             {
                 System.IO.Stream s;

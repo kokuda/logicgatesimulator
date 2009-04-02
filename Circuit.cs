@@ -108,8 +108,6 @@ namespace LogicSim
 
         public void Deserialize(System.Xml.XmlReader reader)
         {
-            //reader.ReadStartElement("circuit");
-
             // Delete the current components.
             Clear();
 
@@ -145,6 +143,5 @@ namespace LogicSim
         }
 
         private List<Components.Component> mComponentList;
-        //private Control mParent;
     }
 }
