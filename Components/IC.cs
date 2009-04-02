@@ -197,13 +197,20 @@ namespace LogicSim.Components
                 mComponent = component;
             }
 
+            class ICForm : Form
+            {
+                public ICForm()
+                {
+                }
+            }
+
             // Open a modal window containing the contents of the internal
             // circuit.
             protected override void OnMouseDoubleClick(MouseEventArgs e)
             {
                 base.OnMouseDoubleClick(e);
 
-                Form f = new Form();
+                Form f = new ICForm();
 
                 // Show each Component on the new form.
                 Rectangle boundingBox = new Rectangle();
@@ -261,7 +268,7 @@ namespace LogicSim.Components
                 g.DrawString(mComponent.Name, new Font("Courier", 10), Brushes.Black, centerRect);
             }
 
-            private IC mComponent;
+            new private IC mComponent;
         }
 
         ///////////////////////////////////////////////////////////////////////

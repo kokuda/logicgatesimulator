@@ -68,7 +68,7 @@ namespace LogicSim.Components
 
         protected virtual ComponentControl CreateComponentControl()
         {
-            return new ComponentControl(this);
+            return new DefaultDrawComponentControl(this);
         }
 
         public virtual void Setup()

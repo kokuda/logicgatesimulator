@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LogicSim")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Logic gate simulator for constructing circuits from simple components.  See http://notions.okuda.ca for details and updates.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("LogicSim")]

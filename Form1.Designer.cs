@@ -46,9 +46,9 @@
             this.orToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userCreatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitDisplayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitDisplayToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.userCreatedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -56,6 +56,8 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -205,13 +207,6 @@
             this.xorToolStripMenuItem.Text = "Xor";
             this.xorToolStripMenuItem.Click += new System.EventHandler(this.xorToolStripMenuItem_Click);
             // 
-            // userCreatedToolStripMenuItem
-            // 
-            this.userCreatedToolStripMenuItem.Name = "userCreatedToolStripMenuItem";
-            this.userCreatedToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.userCreatedToolStripMenuItem.Text = "User Defined...";
-            this.userCreatedToolStripMenuItem.Click += new System.EventHandler(this.userCreatedToolStripMenuItem_Click);
-            // 
             // bitDisplayToolStripMenuItem
             // 
             this.bitDisplayToolStripMenuItem.Name = "bitDisplayToolStripMenuItem";
@@ -225,6 +220,13 @@
             this.bitDisplayToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
             this.bitDisplayToolStripMenuItem1.Text = "8 Bit Display";
             this.bitDisplayToolStripMenuItem1.Click += new System.EventHandler(this.bitDisplayToolStripMenuItem1_Click);
+            // 
+            // userCreatedToolStripMenuItem
+            // 
+            this.userCreatedToolStripMenuItem.Name = "userCreatedToolStripMenuItem";
+            this.userCreatedToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.userCreatedToolStripMenuItem.Text = "User Defined...";
+            this.userCreatedToolStripMenuItem.Click += new System.EventHandler(this.userCreatedToolStripMenuItem_Click);
             // 
             // timer1
             // 
@@ -245,7 +247,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileStripMenuItem});
+            this.fileStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(577, 24);
@@ -282,6 +285,21 @@
             this.newToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.aboutToolStripMenuItem.Text = "About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -339,6 +357,8 @@
         private System.Windows.Forms.ToolStripMenuItem notToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bitDisplayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bitDisplayToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

@@ -7,12 +7,16 @@ using System.Drawing;
 
 namespace LogicSim.Components
 {
+    ///////////////////////////////////////////////////////////////////////
+    // ComponentControl : Control
+    ///////////////////////////////////////////////////////////////////////
     public class ComponentControl : Control
     {
         public ComponentControl(Component component)
         {
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            BackColor = Color.Transparent;
+            //SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            //BackColor = Color.Transparent;
+            //this.DoubleBuffered = true;
 
             mComponent = component;
             mMouseDown = false;
@@ -34,25 +38,6 @@ namespace LogicSim.Components
             // Remove the logical Component
             mComponent.Circuit.Remove(mComponent);
             mComponent = null;
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            Pen blackpen = new Pen(Color.Black, 1);
-            Graphics g = e.Graphics;
-
-            for (int i = 0; i < mComponent.GetComponent().Connections.Length; ++i)
-            {
-                Color c = mComponent.GetComponent().GetValue(i) ? Color.Red : Color.Black;
-                int w = mComponent.GetComponent().Connections[i].Connections.Count > 0 ? 2 : 1;
-                Pen pen = new Pen(c, w);
-
-                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mComponent.GetComponent().Connections[i].Location, new Size(2, 2)), new Size(4, 4)));
-                g.DrawLine(pen, mComponent.GetComponent().Connections[i].Location, new Point(this.Width / 2, this.Height / 2));
-            }
-            g.DrawEllipse(blackpen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -123,10 +108,79 @@ namespace LogicSim.Components
             // we need to go through the ComponentControlInterface for that.
         }
 
-        private Component mComponent;
-        private bool mMouseDown;
-        private int mMouseX;
-        private int mMouseY;
+        protected Component mComponent;
+        protected bool mMouseDown;
+        protected int mMouseX;
+        protected int mMouseY;
 
     }
+
+    ///////////////////////////////////////////////////////////////////////
+    // DefaultDrawComponentControl : ComponentControl
+    ///////////////////////////////////////////////////////////////////////
+    public class DefaultDrawComponentControl : ComponentControl
+    {
+        public DefaultDrawComponentControl(Component component)
+            : base(component)
+        {
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            Pen blackpen = new Pen(Color.Black, 1);
+            Graphics g = e.Graphics;
+
+            for (int i = 0; i < mComponent.GetComponent().Connections.Length; ++i)
+            {
+                Color c = mComponent.GetComponent().GetValue(i) ? Color.Red : Color.Black;
+                int w = mComponent.GetComponent().Connections[i].Connections.Count > 0 ? 2 : 1;
+                Pen pen = new Pen(c, w);
+
+                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mComponent.GetComponent().Connections[i].Location, new Size(2, 2)), new Size(4, 4)));
+                g.DrawLine(pen, mComponent.GetComponent().Connections[i].Location, new Point(this.Width / 2, this.Height / 2));
+            }
+            g.DrawEllipse(blackpen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // BitmapComponentControl : ComponentControl
+    ///////////////////////////////////////////////////////////////////////
+    class BitmapComponentControl : ComponentControl
+    {
+        public BitmapComponentControl(Component component, string bitmapResource)
+            : base(component)
+        {
+            System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(bitmapResource);
+            mBitmap = new Bitmap(stream);
+        }
+
+        ~BitmapComponentControl()
+        {
+            mBitmap.Dispose();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            Graphics g = e.Graphics;
+            for (int i = 0; i < mComponent.Connections.Length; ++i)
+            {
+                Color c = mComponent.GetValue(i) ? Color.Red : Color.Black;
+                int w = mComponent.Connections[i].Connections.Count > 0 ? 2 : 1;
+                Pen pen = new Pen(c, w);
+
+                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mComponent.Connections[i].Location, new Size(2, 2)), new Size(4, 4)));
+                g.DrawLine(pen, mComponent.Connections[i].Location, new Point(this.Width / 2, mComponent.Connections[i].Location.Y));
+            }
+
+            g.DrawImage(mBitmap, 0, 0);
+        }
+
+        private Bitmap mBitmap;
+    }
+
 }

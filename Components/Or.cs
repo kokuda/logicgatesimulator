@@ -26,7 +26,7 @@ namespace LogicSim.Components
 
         protected override ComponentControl CreateComponentControl()
         {
-            return new BitmapControl(this, "LogicSim.Resources.Or.png");
+            return new BitmapComponentControl(this, "LogicSim.Resources.Or.png");
         }
     }
 }
