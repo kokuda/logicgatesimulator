@@ -60,6 +60,10 @@ namespace LogicSim.Components
             {
                 mMouseDown = false;
 
+                // Snap to grid.
+                int gridSize = 5;
+                mComponent.Location = new Point((mComponent.Location.X + (gridSize / 2)) / gridSize * gridSize, (mComponent.Location.Y + (gridSize / 2)) / gridSize * gridSize);
+
                 // The component may have moved.
                 // Reconnect any connections in the circuit.
                 mComponent.Circuit.ConnectComponent(mComponent);
