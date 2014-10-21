@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual C# Express 2013
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicSim", "LogicSim.csproj", "{E5DF8677-078A-4F74-9E8A-4C194231D87C}"
 EndProject
 Global
