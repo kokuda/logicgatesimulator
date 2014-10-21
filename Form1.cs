@@ -43,6 +43,8 @@ namespace LogicSim
         {
             System.Windows.Forms.OpenFileDialog d = new OpenFileDialog();
             d.Filter = "Component files (*.xml)|*.xml|Circuit files (*.xml)|*.xml";
+            // Set the default path to open files to the directory where the executable is running
+            //d.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             if (d.ShowDialog() == DialogResult.OK)
             {
                 System.IO.Stream s;
