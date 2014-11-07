@@ -139,6 +139,10 @@ namespace LogicSim.Components
         {
         }
 
+        public virtual void OnMouseClick(MouseEventArgs e)
+        {
+        }
+
         public Component GetComponent()
         {
             return this;

@@ -4,6 +4,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace LogicSim.Components
 {
@@ -20,6 +21,9 @@ namespace LogicSim.Components
 
             mComponent = component;
             mMouseDown = false;
+
+            base.MouseDown += OnMouseDown;
+            base.MouseUp += OnMouseUp;
         }
 
         public void DeleteComponent()
@@ -40,7 +44,7 @@ namespace LogicSim.Components
             mComponent = null;
         }
 
-        protected override void OnMouseDown(MouseEventArgs e)
+        void OnMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -48,13 +52,12 @@ namespace LogicSim.Components
                 mMouseDown = true;
                 mMouseX = e.X;
                 mMouseY = e.Y;
+                mMouseDownLocation = Location;
                 this.BringToFront();
             }
-
-            base.OnMouseDown(e);
         }
 
-        protected override void OnMouseUp(MouseEventArgs e)
+        void OnMouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -67,8 +70,13 @@ namespace LogicSim.Components
                 // The component may have moved.
                 // Reconnect any connections in the circuit.
                 mComponent.Circuit.ConnectComponent(mComponent);
+
+                // If the component didn't move much (below the threshold) then consider this to be part of a click.
+                if ((System.Math.Abs(Location.X - mMouseDownLocation.X) < gridSize) && (System.Math.Abs(Location.Y - mMouseDownLocation.Y) < gridSize))
+                {
+                    mComponent.OnMouseClick(e);
+                }
             }
-            base.OnMouseUp(e);
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -116,6 +124,7 @@ namespace LogicSim.Components
         protected bool mMouseDown;
         protected int mMouseX;
         protected int mMouseY;
+        protected Point mMouseDownLocation;
 
     }
 

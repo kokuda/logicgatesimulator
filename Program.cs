@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace LogicSim
@@ -12,6 +13,8 @@ namespace LogicSim
         [STAThread]
         static void Main()
         {
+            Debug.Listeners.Add(new ConsoleTraceListener());
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
