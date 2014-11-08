@@ -105,6 +105,7 @@
     <Compile Include="Components\Not.cs" />
     <Compile Include="Components\Or.cs">
     </Compile>
+    <Compile Include="Components\Switch.cs" />
     <Compile Include="Components\VerticalWire.cs">
     </Compile>
     <Compile Include="Components\Wire.cs">

@@ -78,6 +78,11 @@ namespace LogicSim
             mCircuit.Add(ShowComponent(new Components.Bulb()));
         }
 
+        private void switchButton_Click(object sender, EventArgs e)
+        {
+            mCircuit.Add(ShowComponent(new Components.Switch()));
+        }
+
         private void onToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mCircuit.Add(ShowComponent(new Components.On(0)));

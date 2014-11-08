@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <component type="LogicSim.Components.Bulb" x="340" y="180" />
+  <component type="LogicSim.Components.Switch" x="250" y="140">
+    <switchstate>false</switchstate>
+  </component>
+  <component type="LogicSim.Components.VerticalWire" x="340" y="160" />
+  <component type="LogicSim.Components.On" x="160" y="140">
+    <interval>1000</interval>
+  </component>
+  <component type="LogicSim.Components.Switch" x="270" y="40">
+    <switchstate>true</switchstate>
+  </component>
+  <component type="LogicSim.Components.Bulb" x="270" y="0" />
+  <component type="LogicSim.Components.VerticalWire" x="270" y="20" />
+  <component type="LogicSim.Components.On" x="270" y="80">
+    <interval>1000</interval>
+  </component>
+  <component type="LogicSim.Components.VerticalWire" x="360" y="60" />
+</circuit>
