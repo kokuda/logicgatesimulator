@@ -163,16 +163,38 @@ namespace LogicSim.Components
     ///////////////////////////////////////////////////////////////////////
     class BitmapComponentControl : ComponentControl
     {
-        public BitmapComponentControl(Component component, string bitmapResource)
+        public BitmapComponentControl(Component component, params string[] bitmapResources)
             : base(component)
         {
-            System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(bitmapResource);
-            mBitmap = new Bitmap(stream);
+            mBitmaps = new Bitmap[bitmapResources.Length];
+            for (int i = 0; i < bitmapResources.Length; ++i )
+            {
+                var bitmapResource = bitmapResources[i];
+                System.IO.Stream stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(bitmapResource);
+                mBitmaps[i] = new Bitmap(stream);
+            }
+            mBitmapIndex = 0;
         }
 
         ~BitmapComponentControl()
         {
-            mBitmap.Dispose();
+            foreach (var bitmap in mBitmaps)
+            {
+                bitmap.Dispose();
+            }
+        }
+
+        public int BitmapIndex
+        {
+            get { return mBitmapIndex; }
+            set
+            {
+                Debug.Assert(value < mBitmaps.Length, "BitmapIndex out of range");
+                if (value < mBitmaps.Length)
+                {
+                    mBitmapIndex = value;
+                }
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -190,10 +212,11 @@ namespace LogicSim.Components
                 g.DrawLine(pen, mComponent.Connections[i].Location, new Point(this.Width / 2, mComponent.Connections[i].Location.Y));
             }
 
-            g.DrawImage(mBitmap, 0, 0);
+            g.DrawImage(mBitmaps[mBitmapIndex], 0, 0);
         }
 
-        private Bitmap mBitmap;
+        private Bitmap[] mBitmaps;
+        int mBitmapIndex;
     }
 
 }
