@@ -209,6 +209,11 @@ namespace LogicSim.Components
             get { return mCircuit; }
         }
 
+        public ComponentControl Control
+        {
+            get { return mControl; }
+        }
+
         protected virtual void OnDisconnect()
         {
             InvalidateEx();
