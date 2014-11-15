@@ -54,6 +54,13 @@ namespace LogicSim.Components
             }
         }
 
+        protected override ComponentControl CreateComponentControl()
+        {
+            var control = new BitmapComponentControl(this, "LogicSim.Resources.On_0.png", "LogicSim.Resources.On_1.png");
+            control.BitmapIndex = GetBitmapIndex();
+            return control;
+        }
+
         public double Interval
         {
             get
@@ -78,7 +85,7 @@ namespace LogicSim.Components
                     mTimer = null;
 
                     // An interval of 0 means stay on
-                    Connections[0].Value = true;
+                    SetState(true);
                 }
             }
         }
@@ -86,7 +93,27 @@ namespace LogicSim.Components
         void OnTimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             // Toggle the value
-            Connections[0].Value = !Connections[0].Value;
+            SetState(!GetState());
+        }
+
+        private int GetBitmapIndex()
+        {
+            return GetState() ? 1 : 0;
+        }
+
+        private void SetState(bool state)
+        {
+            Connections[0].Value = state;
+            if (Control != null)
+            {
+                var control = (BitmapComponentControl)Control;
+                control.BitmapIndex = GetBitmapIndex();
+            }
+        }
+
+        private bool GetState()
+        {
+            return Connections[0].Value;
         }
 
         System.Timers.Timer mTimer;

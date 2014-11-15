@@ -182,6 +182,8 @@
     <Content Include="data\components\NOT.xml" />
     <Content Include="data\components\SR Flip Flop.xml" />
     <Content Include="data\components\XOR.xml" />
+    <EmbeddedResource Include="Resources\On_1.png" />
+    <EmbeddedResource Include="Resources\On_0.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,KB2468871">
