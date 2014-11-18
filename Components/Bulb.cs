@@ -26,27 +26,18 @@ namespace LogicSim.Components
             return new BulbControl(this);
         }
 
-        private class BulbControl : ComponentControl
+        private class BulbControl : BitmapComponentControl
         {
             public BulbControl(Bulb bulb)
-                : base(bulb)
+                : base(bulb, "LogicSim.Resources.Bulb_0.png", "LogicSim.Resources.Bulb_1.png")
             {
                 mBulb = bulb;
             }
 
             protected override void OnPaint(PaintEventArgs e)
             {
-                Graphics g = e.Graphics;
-
-                Color c = mBulb.GetValue(0) ? Color.Red : Color.Black;
-                int w = mBulb.Connections[0].Connections.Count > 0 ? 2 : 1;
-                Pen pen = new Pen(c, w);
-
-                g.DrawEllipse(pen, new Rectangle(Point.Subtract(mBulb.Connections[0].Location, new Size(2, 2)), new Size(4, 4)));
-                g.DrawLine(pen, mBulb.Connections[0].Location, new Point(this.Width / 2, this.Height / 2));
-
-                //g.DrawEllipse(pen, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
-                g.FillEllipse(mBulb.GetValue(0) ? Brushes.Red : Brushes.Black, this.Width / 3, this.Height / 3, this.Width / 3, this.Height / 3);
+                BitmapIndex = mBulb.GetValue(0) ? 1 : 0;
+                base.OnPaint(e);
             }
 
             private Bulb mBulb;
